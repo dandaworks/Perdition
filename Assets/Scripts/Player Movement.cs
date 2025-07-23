@@ -180,7 +180,6 @@ public class PlayerMovement : MonoBehaviour
             //GameOver();
             Debug.Log("GameOver");
         }
-        
     }
 
     void UpdateHealthUI()
