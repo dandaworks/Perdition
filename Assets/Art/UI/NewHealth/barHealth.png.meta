@@ -1,0 +1,1244 @@
+fileFormatVersion: 2
+guid: 9f7278d4991c4f940a5904fcfee499e7
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: barHealth_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 304
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e89c947c73db3204f91f88470756dd1f
+      internalID: 1117459098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_1
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 304
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63be0653ba9907d4394b2001162e5e95
+      internalID: 768831611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_2
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 304
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13a2b955aafefde46a74a05819a9d80f
+      internalID: -1243174664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_3
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 304
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea8dac3b5a18f2a4a9648801ce791924
+      internalID: 1817790981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_4
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 304
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdbe9cd6c838375428ec2ff995e45ccf
+      internalID: 1710815843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_5
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 304
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d2f6f50c9570634f8d6b44a3f7ee09b
+      internalID: -1451997052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 266
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 716f5b012ce7de04fadc0b38aa7b639b
+      internalID: 1668129432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_7
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 266
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b26c3f881338b1b47b8cd636304e0b61
+      internalID: 2017084030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_8
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 266
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e40d6b26fe3a8240ad85ac9b317ccf0
+      internalID: 1656990734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_9
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 266
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63b00a57690673d4e8b19d5fe8a24816
+      internalID: -1160471488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_10
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 266
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf11f1371949e5d4c907ce26e02490b6
+      internalID: 1551528908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_11
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 266
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2f79153392733a45a684d6ecf0e3c7c
+      internalID: -1306129175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 228
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1097933d3722bbf48868a72ae871577f
+      internalID: 1098432024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_13
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 228
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 988b22e35080b3a40afe822d9c701055
+      internalID: 307538201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_14
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 228
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b4b90017b14534498c63601a2c66576
+      internalID: -1990516358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_15
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 228
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f2850613c9dde64dbbff0424592e23e
+      internalID: 1447237082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_16
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 228
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdb36058ebd228342b034777a359074b
+      internalID: -397912379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_17
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 228
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12d63147c19986c488dc6c867da683a7
+      internalID: 466340006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 190
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5813781b935c23419dbaca4e6a2f8ad
+      internalID: 699465611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_19
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 190
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83d12e220a943a143a2fefa88d0d3f8e
+      internalID: -793312473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_20
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 190
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fa6cb2e147044b438c4ff9711cb2c15
+      internalID: -134325028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_21
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 190
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdcf6395058baf24a908300a54c451ff
+      internalID: 1309553920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_22
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 190
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2410ad8aa3141ad409694c4464d690e1
+      internalID: -1743357706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_23
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 190
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faf705ed26f8f5d44bbec8a2bb90d067
+      internalID: 1321282782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 152
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6906eae122326cd4eab2e445b977ebed
+      internalID: 1359572513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_25
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 152
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bd330e4cdba8ef4f9b7852f6f624648
+      internalID: -233637829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_26
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 152
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fdc9ed042eb09b42856310103f11896
+      internalID: -55392543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_27
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 152
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8415e6e7956e4fe498584401bbfddb29
+      internalID: -1785715425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_28
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 152
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84172b313c4aac548b5a8fbdeb3eb0a0
+      internalID: -1006965419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_29
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 114
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c662f68351980f4c80f493cc108df5e
+      internalID: -1785236716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_30
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 114
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e68c84723540874fac845077976cc84
+      internalID: 1458059374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_31
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 114
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4847182d9ddc270458ca3285412ee504
+      internalID: 354733320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_32
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 114
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30bdab6b467281348b75d340f0010010
+      internalID: -1088873764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_33
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 114
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 747508dc299111d409ebf5f05ec3615a
+      internalID: -1630258748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_34
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 76
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ddb32c9e5afc524f8e84014f4ab914c
+      internalID: -1073132170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_35
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 76
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3f46b5aaaf329c448538324fbe9af1d
+      internalID: 930202887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_36
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 76
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 686ca84688caf484ea154283c6dfe959
+      internalID: 715076812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_37
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 76
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7aae8b18e98d9e4c83e283646c3a42e
+      internalID: 695051030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_38
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 76
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35fca1b79d154da4ca96c95a1525362a
+      internalID: -2032885597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 38
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc258d09f58dcde489ebcf8661495517
+      internalID: -1062595778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_40
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 38
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 815ae31a4b2f96e4fa118f7ba9db242c
+      internalID: 1741810701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_41
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 38
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1bee860277c6ee4b8d804be569bdef9
+      internalID: 1518061254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_42
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 38
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3c449750a6976a4ca2e27a2e0b5da69
+      internalID: -1784776512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_43
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 38
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dde1cca2259079498a5b90feacf3654
+      internalID: 2118432649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52d96d0589ab11545af3f7419348452f
+      internalID: 889295801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_45
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 0
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9ec06aefa31b314296d221f9ecbc85e
+      internalID: -1661103464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_46
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 0
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a629a0d6f765ea468f15af1c47f0120
+      internalID: -263694289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_47
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 0
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76b08336adadc2243adc15ea9ba416c1
+      internalID: -1756348209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barHealth_48
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 0
+        width: 164
+        height: 28
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e515eb718db978646bcb7a7fbcc2f628
+      internalID: 987692475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f5ffc622be82fb84e8b94a0e478cba07
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      barHealth_0: 1117459098
+      barHealth_1: 768831611
+      barHealth_10: 1551528908
+      barHealth_11: -1306129175
+      barHealth_12: 1098432024
+      barHealth_13: 307538201
+      barHealth_14: -1990516358
+      barHealth_15: 1447237082
+      barHealth_16: -397912379
+      barHealth_17: 466340006
+      barHealth_18: 699465611
+      barHealth_19: -793312473
+      barHealth_2: -1243174664
+      barHealth_20: -134325028
+      barHealth_21: 1309553920
+      barHealth_22: -1743357706
+      barHealth_23: 1321282782
+      barHealth_24: 1359572513
+      barHealth_25: -233637829
+      barHealth_26: -55392543
+      barHealth_27: -1785715425
+      barHealth_28: -1006965419
+      barHealth_29: -1785236716
+      barHealth_3: 1817790981
+      barHealth_30: 1458059374
+      barHealth_31: 354733320
+      barHealth_32: -1088873764
+      barHealth_33: -1630258748
+      barHealth_34: -1073132170
+      barHealth_35: 930202887
+      barHealth_36: 715076812
+      barHealth_37: 695051030
+      barHealth_38: -2032885597
+      barHealth_39: -1062595778
+      barHealth_4: 1710815843
+      barHealth_40: 1741810701
+      barHealth_41: 1518061254
+      barHealth_42: -1784776512
+      barHealth_43: 2118432649
+      barHealth_44: 889295801
+      barHealth_45: -1661103464
+      barHealth_46: -263694289
+      barHealth_47: -1756348209
+      barHealth_48: 987692475
+      barHealth_5: -1451997052
+      barHealth_6: 1668129432
+      barHealth_7: 2017084030
+      barHealth_8: 1656990734
+      barHealth_9: -1160471488
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
