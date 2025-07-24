@@ -8,9 +8,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/LevelDesign.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
-    path: Assets/Scenes/ArtTestPrototype.unity
+  - enabled: 0
+    path: Assets/Scenes/ArtTesting.unity
     guid: f136e4cc98cf0ed47a7368a9307e6af3
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: fdd0c87d3e73c4e4aa341e02feb62bdc
+  - enabled: 1
+    path: Assets/Scenes/Hub.unity
+    guid: 63c0713f7866f144f996b2671f2530b1
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
