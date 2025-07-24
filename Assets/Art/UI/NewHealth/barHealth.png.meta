@@ -101,11 +101,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 304
+        y: 456
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -123,11 +123,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 174
-        y: 304
+        y: 456
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -145,11 +145,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 348
-        y: 304
+        y: 456
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -167,11 +167,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 522
-        y: 304
+        y: 456
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -188,12 +188,12 @@ TextureImporter:
       name: barHealth_4
       rect:
         serializedVersion: 2
-        x: 696
-        y: 304
+        x: 0
+        y: 418
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -210,12 +210,12 @@ TextureImporter:
       name: barHealth_5
       rect:
         serializedVersion: 2
-        x: 870
-        y: 304
+        x: 174
+        y: 418
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -232,12 +232,12 @@ TextureImporter:
       name: barHealth_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 266
+        x: 348
+        y: 418
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -254,12 +254,12 @@ TextureImporter:
       name: barHealth_7
       rect:
         serializedVersion: 2
-        x: 174
-        y: 266
+        x: 522
+        y: 418
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -276,12 +276,12 @@ TextureImporter:
       name: barHealth_8
       rect:
         serializedVersion: 2
-        x: 348
-        y: 266
+        x: 0
+        y: 380
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -298,12 +298,12 @@ TextureImporter:
       name: barHealth_9
       rect:
         serializedVersion: 2
-        x: 522
-        y: 266
+        x: 174
+        y: 380
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -320,12 +320,12 @@ TextureImporter:
       name: barHealth_10
       rect:
         serializedVersion: 2
-        x: 696
-        y: 266
+        x: 348
+        y: 380
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -342,12 +342,12 @@ TextureImporter:
       name: barHealth_11
       rect:
         serializedVersion: 2
-        x: 870
-        y: 266
+        x: 522
+        y: 380
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -365,11 +365,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 228
+        y: 342
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -387,11 +387,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 174
-        y: 228
+        y: 342
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -409,11 +409,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 348
-        y: 228
+        y: 342
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -431,11 +431,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 522
-        y: 228
+        y: 342
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -452,12 +452,12 @@ TextureImporter:
       name: barHealth_16
       rect:
         serializedVersion: 2
-        x: 696
-        y: 228
+        x: 0
+        y: 304
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -474,12 +474,12 @@ TextureImporter:
       name: barHealth_17
       rect:
         serializedVersion: 2
-        x: 870
-        y: 228
+        x: 174
+        y: 304
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -496,12 +496,12 @@ TextureImporter:
       name: barHealth_18
       rect:
         serializedVersion: 2
-        x: 0
-        y: 190
+        x: 348
+        y: 304
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -518,12 +518,12 @@ TextureImporter:
       name: barHealth_19
       rect:
         serializedVersion: 2
-        x: 174
-        y: 190
+        x: 522
+        y: 304
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -540,12 +540,12 @@ TextureImporter:
       name: barHealth_20
       rect:
         serializedVersion: 2
-        x: 348
-        y: 190
+        x: 0
+        y: 266
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -562,12 +562,12 @@ TextureImporter:
       name: barHealth_21
       rect:
         serializedVersion: 2
-        x: 522
-        y: 190
+        x: 174
+        y: 266
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -584,12 +584,12 @@ TextureImporter:
       name: barHealth_22
       rect:
         serializedVersion: 2
-        x: 696
-        y: 190
+        x: 348
+        y: 266
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -606,12 +606,12 @@ TextureImporter:
       name: barHealth_23
       rect:
         serializedVersion: 2
-        x: 870
-        y: 190
+        x: 522
+        y: 266
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -629,11 +629,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 152
+        y: 228
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -651,11 +651,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 174
-        y: 152
+        y: 228
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -673,11 +673,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 348
-        y: 152
+        y: 228
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -695,11 +695,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 522
-        y: 152
+        y: 228
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -716,12 +716,12 @@ TextureImporter:
       name: barHealth_28
       rect:
         serializedVersion: 2
-        x: 696
-        y: 152
+        x: 0
+        y: 190
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -738,12 +738,12 @@ TextureImporter:
       name: barHealth_29
       rect:
         serializedVersion: 2
-        x: 0
-        y: 114
+        x: 174
+        y: 190
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -760,12 +760,12 @@ TextureImporter:
       name: barHealth_30
       rect:
         serializedVersion: 2
-        x: 174
-        y: 114
+        x: 348
+        y: 190
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -782,12 +782,12 @@ TextureImporter:
       name: barHealth_31
       rect:
         serializedVersion: 2
-        x: 348
-        y: 114
+        x: 522
+        y: 190
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -804,12 +804,12 @@ TextureImporter:
       name: barHealth_32
       rect:
         serializedVersion: 2
-        x: 522
-        y: 114
+        x: 0
+        y: 152
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -826,12 +826,12 @@ TextureImporter:
       name: barHealth_33
       rect:
         serializedVersion: 2
-        x: 696
-        y: 114
+        x: 174
+        y: 152
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -848,12 +848,12 @@ TextureImporter:
       name: barHealth_34
       rect:
         serializedVersion: 2
-        x: 0
-        y: 76
+        x: 348
+        y: 152
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -870,12 +870,12 @@ TextureImporter:
       name: barHealth_35
       rect:
         serializedVersion: 2
-        x: 174
-        y: 76
+        x: 522
+        y: 152
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -892,12 +892,12 @@ TextureImporter:
       name: barHealth_36
       rect:
         serializedVersion: 2
-        x: 348
-        y: 76
+        x: 0
+        y: 114
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -914,12 +914,12 @@ TextureImporter:
       name: barHealth_37
       rect:
         serializedVersion: 2
-        x: 522
-        y: 76
+        x: 174
+        y: 114
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -936,12 +936,12 @@ TextureImporter:
       name: barHealth_38
       rect:
         serializedVersion: 2
-        x: 696
-        y: 76
+        x: 348
+        y: 114
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -958,12 +958,12 @@ TextureImporter:
       name: barHealth_39
       rect:
         serializedVersion: 2
-        x: 0
-        y: 38
+        x: 522
+        y: 114
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -980,12 +980,12 @@ TextureImporter:
       name: barHealth_40
       rect:
         serializedVersion: 2
-        x: 174
-        y: 38
+        x: 0
+        y: 76
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1002,12 +1002,12 @@ TextureImporter:
       name: barHealth_41
       rect:
         serializedVersion: 2
-        x: 348
-        y: 38
+        x: 174
+        y: 76
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1024,12 +1024,12 @@ TextureImporter:
       name: barHealth_42
       rect:
         serializedVersion: 2
-        x: 522
-        y: 38
+        x: 348
+        y: 76
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1046,12 +1046,12 @@ TextureImporter:
       name: barHealth_43
       rect:
         serializedVersion: 2
-        x: 696
-        y: 38
+        x: 522
+        y: 76
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1069,11 +1069,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 38
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1091,11 +1091,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 174
-        y: 0
+        y: 38
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1113,11 +1113,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 348
-        y: 0
+        y: 38
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1135,11 +1135,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 522
-        y: 0
+        y: 38
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1156,12 +1156,12 @@ TextureImporter:
       name: barHealth_48
       rect:
         serializedVersion: 2
-        x: 696
+        x: 0
         y: 0
         width: 164
         height: 28
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 9
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
