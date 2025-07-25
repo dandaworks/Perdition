@@ -5,6 +5,8 @@ public class LevelManager : MonoBehaviour
 {
     public string playerTag = "Player";
     public bool onCollide = true;
+    public bool chooseScene = false;
+    public int chooseSceneIndex = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void OnTriggerEnter(Collider other)
     {
@@ -15,10 +17,18 @@ public class LevelManager : MonoBehaviour
     }
     public void LoadScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (!chooseScene)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else
+        {
+            SceneManager.LoadScene(chooseSceneIndex);
+        }
+
     }
     public void ExitGame()
     {
-
+        Application.Quit();
     }
 }
