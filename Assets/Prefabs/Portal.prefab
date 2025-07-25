@@ -68,6 +68,22 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 08a48bf4789c642418d098a635bd810d, type: 2}
+    - target: {fileID: -2271502847731017999, guid: aa67bae2b538e48458d58fa103360702, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -2271502847731017999, guid: aa67bae2b538e48458d58fa103360702, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -2271502847731017999, guid: aa67bae2b538e48458d58fa103360702, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -2271502847731017999, guid: aa67bae2b538e48458d58fa103360702, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: aa67bae2b538e48458d58fa103360702, type: 3}
       propertyPath: m_Name
       value: Portal
