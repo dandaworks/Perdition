@@ -217,9 +217,9 @@ Shader "Custom/URP/PS1"
 
 				// float3 positionWS = TransformObjectToWorld(i.positionOS);
 				float3 normalWS = TransformObjectToWorldNormal(i.normalOS);
-				o.positionCS = TransformWorldToHClip(/*ApplyShadowBias(*/vInputs.positionWS/*, normalWS, _LightDirection)*/);
+				o.positionCS = TransformWorldToHClip(ApplyShadowBias(vInputs.positionWS, normalWS, _LightDirection));
 
-				// o.positionCS = ApplyShadowClamping(o.positionCS);
+				o.positionCS = ApplyShadowClamping(o.positionCS);
 
 				return o.positionCS;
 			}

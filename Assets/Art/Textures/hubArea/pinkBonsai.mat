@@ -105,7 +105,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Jitter: 1
-    - _JitterGridScale: 20
+    - _JitterGridScale: 16
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
