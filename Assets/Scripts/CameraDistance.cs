@@ -19,7 +19,7 @@ public class CameraDistance : MonoBehaviour
         Vector3 forward = -transform.forward;
 
         RaycastHit raycast;
-        Physics.Linecast(transform.parent.position, transform.parent.position + (forward * maximumCameraDistance), out raycast, layers);
+        Physics.Linecast(transform.parent.position, transform.parent.position + (forward * (maximumCameraDistance + pillow)), out raycast, layers);
 
         float distance = raycast.collider != null ? raycast.distance - pillow : maximumCameraDistance;
 
