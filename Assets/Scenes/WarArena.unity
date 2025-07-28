@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 441504050}
   - component: {fileID: 441504049}
   - component: {fileID: 441504048}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1200,7 +1200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRange: 10
-  player: {fileID: 0}
+  player: {fileID: 1504693719}
   contactDamage: 10
   maxHealth: 50
 --- !u!65 &1049396605
@@ -1327,6 +1327,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5504170770754116524, guid: 364b371b9fec3244b9a95d9d662652be, type: 3}
+--- !u!4 &1504693719 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3974183139518597090, guid: e386fbf5ee78cd34dad823111da64b17, type: 3}
+  m_PrefabInstance: {fileID: 920194557}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1539795154
 GameObject:
   m_ObjectHideFlags: 0
@@ -2000,7 +2005,7 @@ GameObject:
   - component: {fileID: 2052671362}
   - component: {fileID: 2052671361}
   - component: {fileID: 2052671360}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
