@@ -1651,7 +1651,7 @@ PrefabInstance:
       addedObject: {fileID: 2119489179}
     - targetCorrespondingSourceObject: {fileID: 4660308004089700148, guid: cddc835aae00d5d409cc57f2c947b2a0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2119489178}
+      addedObject: {fileID: 2119489183}
   m_SourcePrefab: {fileID: 100100000, guid: cddc835aae00d5d409cc57f2c947b2a0, type: 3}
 --- !u!1 &2119489172 stripped
 GameObject:
@@ -1680,22 +1680,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6714019880058840226, guid: 44f9ac8ec228fd24587322c19460a6cf, type: 3}
---- !u!114 &2119489178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2119489172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 744d4f5ce3beeff408b9c43d62640e9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectionRange: 10
-  player: {fileID: 1355032411}
-  contactDamage: 10
-  maxHealth: 50
 --- !u!195 &2119489179
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1718,6 +1702,22 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2119489183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119489172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2157bf369b8e7414c85369f509695dea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRange: 10
+  player: {fileID: 1355032411}
+  contactDamage: 10
+  maxHealth: 50
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
