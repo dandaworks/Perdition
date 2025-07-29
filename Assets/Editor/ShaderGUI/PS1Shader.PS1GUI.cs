@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEditor;
-using UnityEngine.Rendering;
+using static UnityEditor.Rendering.MaterialEditorExtension;
+using System.Collections.Generic;
 
 namespace piqey.PS1
 {
 	internal partial class PS1Shader : BaseShaderGUI
 	{
 		/// <summary>
-		/// Editor script for the SimpleLit material inspector.
+		/// Editor script for the PS1 shader's material inspector.
 		/// </summary>
 		public static class PS1GUI
 		{
@@ -48,11 +49,11 @@ namespace piqey.PS1
 			/// </summary>
 			internal static class Styles
 			{
-				public static readonly GUIContent Smoothness = EditorGUIUtility.TrTextContent("Smoothness",
-					"Smoothness value.\nI believe this is currently useless; I'm probably missing a preprocessor directive in my shader for a lighting feature.");
+				// public static readonly GUIContent Smoothness = EditorGUIUtility.TrTextContent("Smoothness",
+				// 	"Smoothness value.\nI believe this is currently useless; I'm probably missing a preprocessor directive in my shader for a lighting feature.");
 
-				public static readonly GUIContent Specular = EditorGUIUtility.TrTextContent("Specular",
-					"Smoothness value.\nI believe this is currently useless; I'm probably missing a preprocessor directive in my shader for a lighting feature.");
+				// public static readonly GUIContent Specular = EditorGUIUtility.TrTextContent("Specular",
+				// 	"Smoothness value.\nI believe this is currently useless; I'm probably missing a preprocessor directive in my shader for a lighting feature.");
 
 				public static readonly GUIContent PS1Inputs = EditorGUIUtility.TrTextContent("PS1 Inputs",
 					"These inputs allow for per-material control over several effects implemented to achieve the PS1 aesthetic.");
@@ -69,6 +70,11 @@ namespace piqey.PS1
 				public static readonly GUIContent Affine = EditorGUIUtility.TrTextContent("Affine Texture Mapping",
 					"Enables/disables affine UV texture mapping.");
 
+				public static readonly GUIContent Sampler = EditorGUIUtility.TrTextContent("Texture Sampling Override",
+					"Overrides texture sampling options (as opposed to using the ones specified in the Inspector window when selecting a texture).");
+
+				public static readonly string[] SamplerNames = System.Enum.GetNames(typeof(SamplerType));
+
 				/// <summary>
 				/// The text and tooltip for the specular map GUI.
 				/// </summary>
@@ -76,43 +82,24 @@ namespace piqey.PS1
 				// 	EditorGUIUtility.TrTextContent("Specular Map", "Designates a Specular Map and specular color determining the apperance of reflections on this Material's surface.");
 			}
 
+			public enum SamplerType
+			{
+				InheritFromTextures = 0,
+				PointClamp = 1,
+				PointRepeat = 2
+			}
+
+			public static readonly Dictionary<SamplerType, string> SamplerKeywords = new()
+			{
+				{ SamplerType.PointClamp,  "_PS1_SAMPLER_POINTCLAMP"  },
+				{ SamplerType.PointRepeat, "_PS1_SAMPLER_POINTREPEAT" },
+			};
+
 			/// <summary>
 			/// Container for the properties used in the <see cref="PS1Shader" /> editor script.
 			/// </summary>
 			public struct PS1Properties
 			{
-				// Surface Input Props
-
-				/// <summary>
-				/// The MaterialProperty for specular color.
-				/// </summary>
-				// public MaterialProperty specColor;
-
-				/// <summary>
-				/// The MaterialProperty for specular smoothness map.
-				/// </summary>
-				// public MaterialProperty specGlossMap;
-
-				/// <summary>
-				/// The MaterialProperty for specular highlights.
-				/// </summary>
-				// public MaterialProperty specHighlights;
-
-				/// <summary>
-				/// The MaterialProperty for smoothness alpha channel.
-				/// </summary>
-				// public MaterialProperty smoothnessMapChannel;
-
-				/// <summary>
-				/// The MaterialProperty for smoothness value.
-				/// </summary>
-				public MaterialProperty smoothness;
-
-				/// <summary>
-				/// The MaterialProperty for specular value.
-				/// </summary>
-				public MaterialProperty specular;
-
 				public MaterialProperty jitter;
 				public MaterialProperty jitterGridScale;
 
@@ -120,10 +107,12 @@ namespace piqey.PS1
 
 				public MaterialProperty affine;
 
+				public MaterialProperty sampler;
+
 				/// <summary>
 				/// The MaterialProperty for normal map.
 				/// </summary>
-				// public MaterialProperty bumpMapProp;
+				public MaterialProperty bumpMapProp;
 
 				/// <summary>
 				/// Constructor for the <see cref="PS1Properties" /> container struct.
@@ -132,8 +121,8 @@ namespace piqey.PS1
 				public PS1Properties(MaterialProperty[] properties)
 				{
 					// Specular Properties
-					smoothness = FindProperty("_Smoothness", properties, false);
-					specular = FindProperty("_Specular", properties, false);
+					// smoothness = FindProperty("_Smoothness", properties, false);
+					// specular = FindProperty("_Specular", properties, false);
 
 					// PS1 Properties
 
@@ -143,9 +132,11 @@ namespace piqey.PS1
 
 					affine = FindProperty("_Affine", properties, false);
 
+					sampler = FindProperty("_PS1_SAMPLER", properties, false);
+
 					// Misc.
 
-					// bumpMapProp = FindProperty("_BumpMap", properties, false);
+					bumpMapProp = FindProperty("_BumpMap", properties, false);
 				}
 			}
 
@@ -156,8 +147,8 @@ namespace piqey.PS1
 			/// <param name="materialEditor"></param>
 			public static void Inputs(PS1Properties properties, MaterialEditor materialEditor)
 			{
-				DoSpecularArea(properties, materialEditor);
-				// DrawNormalArea(materialEditor, properties.bumpMapProp);
+				// DoSpecularArea(properties, materialEditor);
+				DrawNormalArea(materialEditor, properties.bumpMapProp);
 			}
 
 			/// <summary>
@@ -165,17 +156,17 @@ namespace piqey.PS1
 			/// </summary>
 			/// <param name="properties"></param>
 			/// <param name="materialEditor"></param>
-			public static void DoSpecularArea(PS1Properties properties, MaterialEditor materialEditor)
-			{
+			// public static void DoSpecularArea(PS1Properties properties, MaterialEditor materialEditor)
+			// {
 				// SpecularSource specSource = (SpecularSource)properties.specHighlights.floatValue;
 				// // EditorGUI.BeginDisabledGroup(specSource == SpecularSource.NoSpecular);
 				// BaseShaderGUI.TextureColorProps(materialEditor, Styles.specularMapText, properties.specGlossMap, properties.specColor, true);
 				// LitGUI.DoSmoothness(materialEditor, material, properties.smoothness, properties.smoothnessMapChannel, LitGUI.Styles.specularSmoothnessChannelNames);
 				// EditorGUI.EndDisabledGroup();
 
-				materialEditor.ShaderProperty(properties.smoothness, Styles.Smoothness);
-				materialEditor.ShaderProperty(properties.specular, Styles.Specular);
-			}
+				// materialEditor.ShaderProperty(properties.smoothness, Styles.Smoothness);
+				// materialEditor.ShaderProperty(properties.specular, Styles.Specular);
+			// }
 
 			/// <summary>
 			/// Draws the PS1 area GUI.
@@ -193,82 +184,16 @@ namespace piqey.PS1
 				EditorGUI.EndDisabledGroup();
 
 				materialEditor.ShaderProperty(properties.affine, Styles.Affine);
+
+				DoPopup(materialEditor, Styles.Sampler, properties.sampler, Styles.SamplerNames);
+				// if (properties.sampler != null && (SamplerType)properties.sampler.floatValue == )
 			}
 
-			/// <summary>
-			/// Sets up the keywords for the material and shader.
-			/// </summary>
-			/// <param name="material">The material to use.</param>
-			public static void SetMaterialKeywords(Material material)
+			internal static void DoPopup(MaterialEditor materialEditor, GUIContent label, MaterialProperty property, string[] options)
 			{
-				// UpdateMaterialSpecularSource(material);
+				if (property != null)
+					materialEditor.PopupShaderProperty(property, label, options);
 			}
-
-			/*
-			private static void UpdateMaterialSpecularSource(Material material)
-			{
-				bool opaque = (SurfaceType)material.GetFloat("_Surface") == SurfaceType.Opaque;
-				// SpecularSource specSource = (SpecularSource)material.GetFloat("_SpecularHighlights");
-
-				// if (specSource == SpecularSource.NoSpecular)
-				// {
-				// 	CoreUtils.SetKeyword(material, "_SPECGLOSSMAP", false);
-				// 	CoreUtils.SetKeyword(material, "_SPECULAR_COLOR", false);
-				// 	CoreUtils.SetKeyword(material, "_GLOSSINESS_FROM_BASE_ALPHA", false);
-				// }
-				else
-				{
-					SmoothnessMapChannel smoothnessSource = (SmoothnessMapChannel)material.GetFloat("_SmoothnessSource");
-					bool hasMap = material.GetTexture("_SpecGlossMap");
-
-					CoreUtils.SetKeyword(material, "_SPECGLOSSMAP", hasMap);
-					CoreUtils.SetKeyword(material, "_SPECULAR_COLOR", !hasMap);
-
-					if (opaque)
-						CoreUtils.SetKeyword(material, "_GLOSSINESS_FROM_BASE_ALPHA", smoothnessSource == SmoothnessMapChannel.AlbedoAlpha);
-					else
-						CoreUtils.SetKeyword(material, "_GLOSSINESS_FROM_BASE_ALPHA", false);
-
-					string color;
-					if (smoothnessSource != SmoothnessMapChannel.AlbedoAlpha || !opaque)
-						color = "_SpecColor";
-					else
-						color = "_BaseColor";
-
-					var col = material.GetColor(color);
-					float smoothness = material.GetFloat("_Smoothness");
-					if (smoothness != col.a)
-					{
-						col.a = smoothness;
-						material.SetColor(color, col);
-					}
-				}
-			}
-			*/
-
-			/*
-			internal static void DrawFloatToggleProperty(GUIContent styles, MaterialProperty prop, int indentLevel = 0, bool isDisabled = false)
-			{
-				if (prop == null)
-					return;
-
-				EditorGUI.BeginDisabledGroup(isDisabled);
-
-				EditorGUI.indentLevel += indentLevel;
-				EditorGUI.BeginChangeCheck();
-				MaterialEditor.BeginProperty(prop);
-
-				bool newValue = EditorGUILayout.Toggle(styles, prop.floatValue == 1);
-
-				if (EditorGUI.EndChangeCheck())
-					prop.floatValue = newValue ? 1.0f : 0.0f;
-
-				MaterialEditor.EndProperty();
-				EditorGUI.indentLevel -= indentLevel;
-
-				EditorGUI.EndDisabledGroup();
-			}
-			*/
 		}
 	}
 }

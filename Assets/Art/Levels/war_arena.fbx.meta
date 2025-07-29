@@ -3,7 +3,42 @@ guid: 364b371b9fec3244b9a95d9d662652be
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: f0e146814d789004a9a17fcd2778a8a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 84cad77c6d7e1664cabae08cfadecbee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dirt
+    second: {fileID: 2100000, guid: c4ea78bac6eadaf489f837707586b2b8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sand
+    second: {fileID: 2100000, guid: 523a29f596887b44895c3f0ce843bd03, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sword hilt
+    second: {fileID: 2100000, guid: df1b8b3e48637bc418e48fe350e852ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: torchbase
+    second: {fileID: 2100000, guid: f9e848fea1eb2f745b4cb90fe8599f02, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood
+    second: {fileID: 2100000, guid: 6d336cb4fad9950409b8577c62cdd6c2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

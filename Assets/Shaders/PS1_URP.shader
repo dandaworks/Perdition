@@ -5,10 +5,18 @@ Shader "Custom/URP/PS1"
 		[MainTexture] _BaseMap("Albedo", 2D) = "white" {}
 		[MainColor] _BaseColor("Tint", Color) = (1, 1, 1, 1)
 
+		_Cutoff("Alpha Cutoff", Float) = 1.0
+
+		[Normal] _BumpMap("Normal Map", 2D) = "bump" {}
+		_BumpScale("Scale", Float) = 1.0
+
+		_EmissionMap("Emission", 2D) = "white" {}
+		[HDR] _EmissionColor("Color", Color) = (0, 0, 0, 0)
+
 		// Lighting
 
-		_Smoothness("Smoothness", Range(0.0, 1.0)) = 0.1
-		_Specular("Specular", Range(0.0, 1.0)) = 0.0
+		// _Smoothness("Smoothness", Range(0.0, 1.0)) = 0.1
+		// _Specular("Specular", Range(0.0, 1.0)) = 0.0
 
 		// PS1
 
@@ -18,6 +26,8 @@ Shader "Custom/URP/PS1"
 
 		[Toggle(_PS1_AFFINE)] _Affine("Affine Texture Mapping", Float) = 1
 		// [Toggle] _VERT_LIGHTMAPPING("Vertex Shader Lightmapping", Float) = 1
+
+		_PS1_SAMPLER("Sampling Type", Float) = 2
 
 		// [HideInInspector][Toggle] _PS1_PIXELBLIT("Is Pixel Blit Enabled?", Float) = 0
 		// [HideInInspector] _PS1_PixelBlitParams("Pixel Blit Params", Vector) = (0, 0, 0, 0)
@@ -43,32 +53,64 @@ Shader "Custom/URP/PS1"
 
 	HLSLINCLUDE
 
-	#define _SPECULAR_COLOR_SPECULAR_COLOR
+	#define _SPECULAR_COLOR
+	// #define _SPECULAR_COLOR_SPECULAR_COLOR
+	#define _SPECULARHIGHLIGHTS_OFF
 
 	#pragma shader_feature _FORWARD_PLUS
 
 	#pragma shader_feature_fragment _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
 	#pragma shader_feature_fragment _ADDITIONAL_LIGHT_SHADOWS
 
+	// #pragma shader_feature_local _NORMALMAP
+	// #pragma shader_feature_local_fragment _EMISSION
+
 	#pragma shader_feature _ _PS1_AFFINE
 
 	#pragma shader_feature_vertex _ _PS1_JITTER
 	#pragma shader_feature_vertex _ _PS1_PIXELSNAP
 
+	// #pragma shader_feature_fragment _ _PS1_POINTCLAMP
+
 	#pragma multi_compile _ _PS1_PIXELBLIT
+
+	// #pragma multi_compile _ LIGHTMAP_SHADOW_MIXING
+	// #pragma multi_compile _ SHADOWS_SHADOWMASK
+	// #pragma multi_compile _ DIRLIGHTMAP_COMBINED
+	// #pragma multi_compile _ LIGHTMAP_ON
+	// #pragma multi_compile _ DYNAMICLIGHTMAP_ON
+	// #pragma multi_compile _ USE_LEGACY_LIGHTMAPS
+
+	// #pragma multi_compile_instancing
+	// #pragma instancing_options renderinglayer
 
 	#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 	#include "PS1.cginc"
 
 	CBUFFER_START(UnityPerMaterial)
-		sampler2D _BaseMap;
+		// sampler2D _BaseMap;
 		float4 _BaseMap_ST;
-		float4 _BaseColor;
-		float _Smoothness;
-		float _Specular;
-		float _JitterGridScale;
-		float4 _PS1_PixelBlitParams;
+		half4 _BaseColor;
+
+		half _Cutoff;
+
+		// sampler2D _BumpMap;
+		float4 _BumpMap_ST;
+		half _BumpScale;
+
+		// sampler2D _EmissionMap;
+		half4 _EmissionColor;
+
+		// half _Smoothness;
+		// half _Specular;
+
+		half _JitterGridScale;
+		// float4 _PS1_PixelBlitParams;
+
+		float _Surface;
 	CBUFFER_END
+
+	float4 _PS1_PixelBlitParams;
 
 #if _PS1_PIXELBLIT
 	// uniform float4 _PS1_PixelBlitParams;
@@ -87,7 +129,7 @@ Shader "Custom/URP/PS1"
 		{
 			"RenderType" = "Opaque"
 			"RenderPipeline" = "UniversalPipeline"
-			// "UniversalMaterialType" = "SimpleLit"
+			// "UniversalMaterialType" = "Lit"
 			"Queue" = "Geometry"
 			// "IgnoreProjector" = "True"
 		}
@@ -109,67 +151,237 @@ Shader "Custom/URP/PS1"
 
 			HLSLPROGRAM
 
+			#pragma shader_feature_local _NORMALMAP
+			#pragma shader_feature_local_fragment _EMISSION
+
+			#pragma multi_compile _ LIGHTMAP_SHADOW_MIXING
+			#pragma multi_compile _ SHADOWS_SHADOWMASK
+			#pragma multi_compile _ DIRLIGHTMAP_COMBINED
+			#pragma multi_compile _ LIGHTMAP_ON
+			#pragma multi_compile _ DYNAMICLIGHTMAP_ON
+			#pragma multi_compile _ USE_LEGACY_LIGHTMAPS
+			#pragma multi_compile _ LOD_FADE_CROSSFADE
+			#pragma multi_compile_fragment _ DEBUG_DISPLAY
+
+			#pragma multi_compile_fog
+
+			#include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ProbeVolumeVariants.hlsl"
+
+			#pragma multi_compile_instancing
+			#pragma instancing_options renderinglayer
+
+			// #pragma shader_feature_fragment _ _PS1_POINTCLAMP
+			#pragma shader_feature_local_fragment _ _PS1_SAMPLER_POINTCLAMP _PS1_SAMPLER_POINTREPEAT
+
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+
+		#if _PS1_SAMPLER_POINTCLAMP
+			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/GlobalSamplers.hlsl"
+
+			#define _PS1_SAMPLER sampler_PointClamp
+			#define _PS1_SAMPLER_BUMP sampler_PointClamp
+			#define _PS1_SAMPLER_EMISSION sampler_PointClamp
+		#elif _PS1_SAMPLER_POINTREPEAT
+			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/GlobalSamplers.hlsl"
+
+			#define _PS1_SAMPLER sampler_PointRepeat
+			#define _PS1_SAMPLER_BUMP sampler_PointRepeat
+			#define _PS1_SAMPLER_EMISSION sampler_PointRepeat
+		#else
+			#define _PS1_SAMPLER sampler_BaseMap
+			#define _PS1_SAMPLER_BUMP sampler_BumpMap
+			#define _PS1_SAMPLER_EMISSION sampler_BumpMap
+		#endif
 
 			#pragma vertex Vertex
 			#pragma fragment Fragment
 
+		// #if (defined(_NORMALMAP) || (defined(_PARALLAXMAP) && !defined(REQUIRES_TANGENT_SPACE_VIEW_DIR_INTERPOLATOR))) || defined(_DETAIL)
+		// 	#define REQUIRES_WORLD_SPACE_TANGENT_INTERPOLATOR
+		// #endif
+
 			struct Attributes
 			{
 				float3 positionOS    : POSITION;
+
 				float3 normalOS      : NORMAL;
+				float4 tangentOS     : TANGENT;
+
 				float2 uv            : TEXCOORD0;
+
+				float2 staticLightmapUV        : TEXCOORD1;
+				float2 dynamicLightmapUV       : TEXCOORD2;
+
+				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
 			struct Varyings
 			{
 				float4 positionCS    : SV_POSITION;
-				float3 normalWS      : TEXCOORD0;
+
+				float2 uv            : TEXCOORD0;
 				float3 positionWS    : TEXCOORD1;
-				float2 uv            : TEXCOORD2;
+
+			#ifdef _NORMALMAP
+				half4 normalWS       : TEXCOORD2;
+				half4 tangentWS      : TEXCOORD3;
+				half4 bitangentWS    : TEXCOORD4;
+			#else
+				half3 normalWS       : TEXCOORD2;
+			#endif
+
+			// #if defined(REQUIRES_WORLD_SPACE_TANGENT_INTERPOLATOR)
+			// 	half4 tangentWS      : TEXCOORD3;
+			// #endif
+
+			#ifdef _ADDITIONAL_LIGHTS_VERTEX
+				half4 fogFactorAndVertexLight : TEXCOORD5; // x: fogFactor, yzw: vertex light
+			#else
+				half fogFactor       : TEXCOORD5;
+			#endif
+
+				DECLARE_LIGHTMAP_OR_SH(staticLightmapUV, vertexSH, 6);
+
+			#ifdef DYNAMICLIGHTMAP_ON
+				float2 dynamicLightmapUV     : TEXCOORD7;
+			#endif
+
+			#if defined(REQUIRES_TANGENT_SPACE_VIEW_DIR_INTERPOLATOR)
+				half3 viewDirTS      : TEXCOORD8;
+			#endif
+
+			#ifdef USE_APV_PROBE_OCCLUSION
+				float4 probeOcclusion : TEXCOORD9;
+			#endif
+
+			#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
+				float4 shadowCoord   : TEXCOORD10;
+			#endif
+
+				UNITY_VERTEX_INPUT_INSTANCE_ID
+				UNITY_VERTEX_OUTPUT_STEREO
 			};
 
 			#include "PS1_PreVertex.cginc"
+			#include "PS1_FragHelper.cginc"
 
 			Varyings Vertex(Attributes i)
 			{
-				Varyings o = PreVertex(i, _JitterGridScale, _PS1_PIXPARAMS.xy);
+				VertexPositionInputs vertexInput = (VertexPositionInputs)0;
+
+				UNITY_SETUP_INSTANCE_ID(i);
+				Varyings o = PreVertex(i, _JitterGridScale, _PS1_PIXPARAMS.xy, vertexInput);
+				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
 				o.uv = TRANSFORM_TEX(i.uv, _BaseMap);
 			#if _PS1_AFFINE
 				o.uv *= o.positionCS.w;
 			#endif
 
+				// normalWS and tangentWS already normalized.
+				// This is required to avoid skewing the direction during interpolation.
+				// Also required for per-vertex lighting and SH evaluation
+				VertexNormalInputs normalInput = GetVertexNormalInputs(i.normalOS, i.tangentOS);
+
+			#if defined(_FOG_FRAGMENT)
+				half fogFactor = 0.0h;
+			#else
+				fogFactor = ComputeFogFactor(vertexInput.positionCS.z);
+			#endif
+
+				half3 vertexLight = VertexLighting(vertexInput.positionWS, normalInput.normalWS);
+
+				o.positionWS.xyz = vertexInput.positionWS;
+				o.positionCS = vertexInput.positionCS;
+
+			#ifdef _NORMALMAP
+				half3 viewDirWS = GetWorldSpaceViewDir(vertexInput.positionWS);
+				o.normalWS = half4(normalInput.normalWS, viewDirWS.x);
+				o.tangentWS = half4(normalInput.tangentWS, viewDirWS.y);
+				o.bitangentWS = half4(normalInput.bitangentWS, viewDirWS.z);
+			#else
+				o.normalWS = NormalizeNormalPerVertex(normalInput.normalWS);
+			#endif
+
+			    OUTPUT_LIGHTMAP_UV(input.staticLightmapUV, unity_LightmapST, o.staticLightmapUV);
+			#ifdef DYNAMICLIGHTMAP_ON
+				o.dynamicLightmapUV = input.dynamicLightmapUV.xy * unity_DynamicLightmapST.xy + unity_DynamicLightmapST.zw;
+			#endif
+				OUTPUT_SH4(vertexInput.positionWS, o.normalWS.xyz, GetWorldSpaceNormalizeViewDir(vertexInput.positionWS), o.vertexSH, o.probeOcclusion);
+
+			#ifdef _ADDITIONAL_LIGHTS_VERTEX
+				half3 vertexLight = VertexLighting(vertexInput.positionWS, normalInput.normalWS);
+				o.fogFactorAndVertexLight = half4(fogFactor, vertexLight);
+			#else
+				o.fogFactor = fogFactor;
+			#endif
+
+			#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
+				o.shadowCoord = GetShadowCoord(vertexInput);
+			#endif
+
+			// #if defined(REQUIRES_WORLD_SPACE_POS_INTERPOLATOR)
+				// o.positionWS = vertexInput.positionWS;
+			// #endif
+
 				return o;
 			}
 
 			half4 Fragment(Varyings v) : SV_Target
 			{
+				UNITY_SETUP_INSTANCE_ID(v);
+				UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(v);
+
 				float2 uv = v.uv;
 			#if _PS1_AFFINE
 				uv /= v.positionCS.w;
 			#endif
 
-				// 1) Sample & tint
-				half4 tex = tex2D(_BaseMap, uv) * _BaseColor;
-
-				InputData lightingData = (InputData)0;
-				lightingData.positionWS = v.positionWS;
-				lightingData.normalWS = normalize(v.normalWS);
-				lightingData.viewDirectionWS = GetWorldSpaceViewDir(v.positionWS);
-				lightingData.shadowCoord = TransformWorldToShadowCoord(v.positionWS);
+				InputData lightData = (InputData)0;
 
 				SurfaceData surface = (SurfaceData)0;
-				surface.albedo = half3(1.0, 1.0, 1.0);
-				surface.alpha = 1.0;
-				surface.smoothness = _Smoothness;
-				surface.specular = _Specular;
 
-				half4 lighting = UniversalFragmentBlinnPhong(lightingData, surface) + unity_AmbientSky;
+				PS1_InitializeStandardLitSurfaceData(uv, surface);
 
-				half4 col = tex * lighting;
+				PS1_InitializeInputData(v, surface.normalTS, lightData);
 
-				return tex * col;
+				lightData.normalWS = NormalizeNormalPerPixel(lightData.normalWS);
+				PS1_InitializeBakedGIData(v, lightData);
+
+				SETUP_DEBUG_TEXTURE_DATA(lightData, UNDO_TRANSFORM_TEX(i.uv, _BaseMap));
+
+			#if defined(_DBUFFER)
+				ApplyDecalToSurfaceData(i.positionCS, surfaceData, lightData);
+			#endif
+
+			#ifdef LOD_FADE_CROSSFADE
+				LODFadeCrossFade(input.positionCS);
+			#endif
+
+			#if defined(DEBUG_DISPLAY)
+			#if defined(LIGHTMAP_ON)
+				lightData.staticLightmapUV = v.staticLightmapUV;
+			#else
+				lightData.vertexSH = v.vertexSH;
+			#endif
+			#if defined(DYNAMICLIGHTMAP_ON)
+				lightData.dynamicLightmapUV = v.dynamicLightmapUV;
+			#endif
+			#if defined(USE_APV_PROBE_OCCLUSION)
+				inputData.probeOcclusion = input.probeOcclusion;
+			#endif
+			#endif
+
+				half4 col = UniversalFragmentBlinnPhong(lightData, surface) + unity_AmbientSky;
+				// half4 col = UniversalFragmentPBR(lightData, surface) + unity_AmbientSky;
+				col.rgb = MixFog(col.rgb, lightData.fogCoord);
+				col.a = OutputAlpha(col.a, IsSurfaceTypeTransparent(_Surface));
+
+			// #if defined(LIGHTMAP_ON)
+				return col;
+			// #else
+				// return half4(1.0, 0.0, 0.0, 1.0);
+			// #endif
 			}
 
 			ENDHLSL
@@ -183,9 +395,14 @@ Shader "Custom/URP/PS1"
 				"LightMode" = "ShadowCaster"
 			}
 
+			ZWrite On
+			ZTest LEqual
 			ColorMask 0
+			Cull[_Cull]
 
 			HLSLPROGRAM
+
+			#pragma target 2.0
 
 			#pragma vertex Vertex
 			#pragma fragment Fragment

@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Rendering;
+using UnityEngine.Rendering;
 
 namespace piqey.PS1
 {
@@ -20,13 +22,26 @@ namespace piqey.PS1
 		// material changed check
 		public override void ValidateMaterial(Material material)
 		{
-			SetMaterialKeywords(material);
+			base.ValidateMaterial(material);
+
+			UpdateSamplerKeywords(material);
+		}
+
+		protected void UpdateSamplerKeywords(Material material)
+		{
+			if (_ps1Properties.sampler == null)
+				return;
+
+			PS1GUI.SamplerType samplerType = (PS1GUI.SamplerType)_ps1Properties.sampler.floatValue;
+
+			foreach (KeyValuePair<PS1GUI.SamplerType, string> kv in PS1GUI.SamplerKeywords)
+				CoreUtils.SetKeyword(material, kv.Value, kv.Key == samplerType);
 		}
 
 		// material main surface options
 		public override void DrawSurfaceOptions(Material material)
 		{
-			if (material == null)
+			if (!material)
 				throw new ArgumentNullException(nameof(material));
 
 			// Use default labelWidth
@@ -39,8 +54,9 @@ namespace piqey.PS1
 		public override void DrawSurfaceInputs(Material material)
 		{
 			base.DrawSurfaceInputs(material);
-			// DrawEmissionProperties(material, true);
+			DrawEmissionProperties(material, true);
 			DrawTileOffset(materialEditor, baseMapProp);
+
 			PS1GUI.Inputs(_ps1Properties, materialEditor);
 		}
 
@@ -50,26 +66,22 @@ namespace piqey.PS1
 			base.DrawAdvancedOptions(material);
 		}
 
-		public override void FillAdditionalFoldouts(MaterialHeaderScopeList materialScopesList)
-        {
+		public override void FillAdditionalFoldouts(MaterialHeaderScopeList materialScopesList) =>
             materialScopesList.RegisterHeaderScope(PS1GUI.Styles.PS1Inputs, Expandable.Details, _ => PS1GUI.DoPS1Area(_ps1Properties, materialEditor));
-        }
 
 		public override void AssignNewShaderToMaterial(Material material, Shader oldShader, Shader newShader)
 		{
-			if (material == null)
+			if (!material)
 				throw new ArgumentNullException(nameof(material));
 
 			// _Emission property is lost after assigning Standard shader to the material
 			// thus transfer it before assigning the new shader
-			// if (material.HasProperty("_Emission"))
-			// {
-			// 	material.SetColor("_EmissionColor", material.GetColor("_Emission"));
-			// }
+			if (material.HasProperty("_Emission"))
+				material.SetColor("_EmissionColor", material.GetColor("_Emission"));
 
 			base.AssignNewShaderToMaterial(material, oldShader, newShader);
 
-			if (oldShader == null || !oldShader.name.Contains("Legacy Shaders/"))
+			if (!oldShader || !oldShader.name.Contains("Legacy Shaders/"))
 			{
 				SetupMaterialBlendMode(material);
 				return;
