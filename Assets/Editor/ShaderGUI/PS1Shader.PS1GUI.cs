@@ -113,6 +113,7 @@ namespace piqey.PS1
 				/// The MaterialProperty for normal map.
 				/// </summary>
 				public MaterialProperty bumpMapProp;
+				public MaterialProperty bumpScaleProp;
 
 				/// <summary>
 				/// Constructor for the <see cref="PS1Properties" /> container struct.
@@ -137,6 +138,7 @@ namespace piqey.PS1
 					// Misc.
 
 					bumpMapProp = FindProperty("_BumpMap", properties, false);
+					bumpScaleProp = FindProperty("_BumpScale", properties, false);
 				}
 			}
 
@@ -148,7 +150,7 @@ namespace piqey.PS1
 			public static void Inputs(PS1Properties properties, MaterialEditor materialEditor)
 			{
 				// DoSpecularArea(properties, materialEditor);
-				DrawNormalArea(materialEditor, properties.bumpMapProp);
+				DrawNormalArea(materialEditor, properties.bumpMapProp, properties.bumpScaleProp);
 			}
 
 			/// <summary>

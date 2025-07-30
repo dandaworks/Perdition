@@ -24,6 +24,8 @@ namespace piqey.PS1
 		{
 			base.ValidateMaterial(material);
 
+			SetMaterialKeywords(material);
+
 			UpdateSamplerKeywords(material);
 		}
 
@@ -45,7 +47,7 @@ namespace piqey.PS1
 				throw new ArgumentNullException(nameof(material));
 
 			// Use default labelWidth
-			EditorGUIUtility.labelWidth = 0.0f;
+			// EditorGUIUtility.labelWidth = 0.0f;
 
 			base.DrawSurfaceOptions(material);
 		}
@@ -54,8 +56,9 @@ namespace piqey.PS1
 		public override void DrawSurfaceInputs(Material material)
 		{
 			base.DrawSurfaceInputs(material);
-			DrawEmissionProperties(material, true);
 			DrawTileOffset(materialEditor, baseMapProp);
+
+			DrawEmissionProperties(material, true);
 
 			PS1GUI.Inputs(_ps1Properties, materialEditor);
 		}

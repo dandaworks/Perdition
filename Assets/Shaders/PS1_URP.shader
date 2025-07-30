@@ -36,15 +36,19 @@ Shader "Custom/URP/PS1"
 		_Surface("__surface", Float) = 0.0
 		_Blend("__blend", Float) = 0.0
 		_Cull("__cull", Float) = 2.0
-		/*[ToggleUI]*/ [Toggle] _AlphaClip("__clip", Float) = 0.0
+		[ToggleUI] _AlphaClip("__clip", Float) = 0.0
 		[HideInInspector] _SrcBlend("__src", Float) = 1.0
 		[HideInInspector] _DstBlend("__dst", Float) = 0.0
 		[HideInInspector] _SrcBlendAlpha("__srcA", Float) = 1.0
 		[HideInInspector] _DstBlendAlpha("__dstA", Float) = 0.0
-		[HideInInspector] _ZWrite("__zw", Float) = 1.0
+		// [HideInInspector] _ZWrite("__zw", Float) = 1.0
+		// [HideInInspector] _ZWriteControl("_ZWriteControl", Float) = 0.0
 		[HideInInspector] _BlendModePreserveSpecular("_BlendModePreserveSpecular", Float) = 1.0
 		[HideInInspector] _AlphaToMask("__alphaToMask", Float) = 0.0
 		[HideInInspector] _AddPrecomputedVelocity("_AddPrecomputedVelocity", Float) = 0.0
+		[HideInInspector] _CastShadows("CastShadows", Float) = 1
+		[HideInInspector] _ReceiveShadows("ReceiveShadows", Float) = 1
+		[HideInInspector] _QueueOffset("_QueueOffset", Float) = 0
 
 		[HideInInspector][NoScaleOffset] unity_Lightmaps("unity_Lightmaps", 2DArray) = "" {}
 		[HideInInspector][NoScaleOffset] unity_LightmapsInd("unity_LightmapsInd", 2DArray) = "" {}
@@ -152,7 +156,7 @@ Shader "Custom/URP/PS1"
 			"RenderType" = "Opaque"
 			"RenderPipeline" = "UniversalPipeline"
 			// "UniversalMaterialType" = "Lit"
-			// "Queue" = "Geometry"
+			"Queue" = "Geometry"
 			// "IgnoreProjector" = "True"
 		}
 		// LOD 300
@@ -163,11 +167,13 @@ Shader "Custom/URP/PS1"
 			Tags
 			{
 				"LightMode" = "UniversalForward"
+				"Queue" = "[_QueueOffset]"
 			}
 
 			// Blend states
 			Blend[_SrcBlend][_DstBlend], [_SrcBlendAlpha][_DstBlendAlpha]
-			ZWrite[_ZWrite]
+			// ZWrite[_ZWrite]
+			ZWrite On
 			Cull[_Cull]
 			AlphaToMask[_AlphaToMask]
 
@@ -411,7 +417,7 @@ Shader "Custom/URP/PS1"
 
 			// -------------------------------------
 			// Render State Commands
-			ZWrite On
+			ZWrite[_ZWrite]
 			ColorMask R
 			Cull[_Cull]
 
@@ -565,6 +571,7 @@ Shader "Custom/URP/PS1"
 
 			// -------------------------------------
 			// Render State Commands
+			// ZWrite[_ZWrite]
 			ZWrite On
 			ColorMask R
 			Cull[_Cull]
@@ -674,6 +681,8 @@ Shader "Custom/URP/PS1"
 
 			HLSLPROGRAM
 
+			/*
+
 			#pragma target 2.0
 
 			#pragma vertex Vertex
@@ -726,6 +735,26 @@ Shader "Custom/URP/PS1"
 			{
 				return 0;
 			}
+
+			*/
+
+			#pragma target 2.0
+
+			#pragma vertex ShadowPassVertex
+			#pragma fragment ShadowPassFragment
+
+			#pragma shader_feature_local _ALPHATEST_ON
+			#pragma shader_feature_local_fragment _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+
+			#pragma multi_compile_instancing
+			#include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
+
+			#pragma multi_compile _ LOD_FADE_CROSSFADE
+
+			#pragma multi_compile_vertex _ _CASTING_PUNCTUAL_LIGHT_SHADOW
+
+			// #include "Packages/com.unity.render-pipelines.universal/Shaders/LitInput.hlsl"
+			#include "Packages/com.unity.render-pipelines.universal/Shaders/ShadowCasterPass.hlsl"
 
 			ENDHLSL
 		}
