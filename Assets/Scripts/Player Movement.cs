@@ -44,9 +44,12 @@ public class PlayerMovement : MonoBehaviour
     public float maxPlayerHealth = 100f;
     public float currentPlayerHealth;
     public Slider healthBar;
+    private bool isAlive = true;
+    public GameObject deathUI;
 
     private void Awake()
     {
+        isAlive = true;
         controller = GetComponent<CharacterController>();
         controls = new PlayerControls();
 
@@ -68,34 +71,37 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        UpdateCamera();
-        RegenerateStamina();
-        UpdateStaminaUI();
-        UpdateHealthUI();
-
-        if (controller.isGrounded && velocity.y < 0)
-            velocity.y = -2f;
-
-        Vector3 forward = cameraPivot.forward;
-        Vector3 right = cameraPivot.right;
-        forward.y = 0;
-        right.y = 0;
-        forward.Normalize();
-        right.Normalize();
-
-        Vector3 move = forward * moveInput.y + right * moveInput.x;
-
-        if (move != Vector3.zero)
+        if (isAlive)
         {
-            Quaternion toRotation = Quaternion.LookRotation(move, Vector3.up);
-            transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, 10f * Time.deltaTime);
+            UpdateCamera();
+            RegenerateStamina();
+            UpdateStaminaUI();
+            UpdateHealthUI();
+
+            if (controller.isGrounded && velocity.y < 0)
+                velocity.y = -2f;
+
+            Vector3 forward = cameraPivot.forward;
+            Vector3 right = cameraPivot.right;
+            forward.y = 0;
+            right.y = 0;
+            forward.Normalize();
+            right.Normalize();
+
+            Vector3 move = forward * moveInput.y + right * moveInput.x;
+
+            if (move != Vector3.zero)
+            {
+                Quaternion toRotation = Quaternion.LookRotation(move, Vector3.up);
+                transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, 10f * Time.deltaTime);
+            }
+
+            if (!isDashing)
+                controller.Move(move * moveSpeed * Time.deltaTime);
+
+            velocity.y += gravity * Time.deltaTime;
+            controller.Move(velocity * Time.deltaTime);
         }
-
-        if (!isDashing)
-            controller.Move(move * moveSpeed * Time.deltaTime);
-
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
     }
 
     void TryJump()
@@ -177,7 +183,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (currentPlayerHealth <= 0)
         {
-            //GameOver();
+            GameOver();
             Debug.Log("GameOver");
         }
     }
@@ -188,6 +194,12 @@ public class PlayerMovement : MonoBehaviour
         {
             healthBar.value = currentPlayerHealth / maxPlayerHealth;
         }
+    }
+    void GameOver()
+    {
+        currentPlayerHealth = 0;
+        isAlive = false;
+        deathUI.SetActive(true);
     }
 
 }
