@@ -15,6 +15,7 @@ public class BossStateMachine : BaseStateMachine
     public float maxHealth = 50f;
     private float currentHealth;
     private bool isDead = false;
+    public float maxTimeBetweenAttacks = 3f;
 
     [Header("Damage Cooldown")]
     private float damageCooldown = 1f; // Time between damage ticks (seconds)
@@ -42,12 +43,18 @@ public class BossStateMachine : BaseStateMachine
         stateDead = new BossStateDead(this);
     }
 
-    #endregion 
+    #endregion
 
+    #region components
+
+    public Animator animator;
+
+    #endregion
 
     public override void StartFunctions()
     {
         currentHealth = maxHealth;
+
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 
         if (player == null)

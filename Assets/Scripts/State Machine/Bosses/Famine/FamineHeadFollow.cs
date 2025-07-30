@@ -3,6 +3,8 @@ using UnityEngine;
 public class FamineHeadFollow : MonoBehaviour
 {
     [SerializeField] Transform target;
+
+    public void SetTarget(Transform a) { target = a; }
     [SerializeField] float speed;
     [SerializeField] int damage;
 

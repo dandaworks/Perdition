@@ -18,7 +18,12 @@ public class BossStateFollow : BaseState
     {
         base.thisStart();
 
-        attackTime = Random.Range(1f, 3f);
+        if (stateMachine.animator)
+        {
+            stateMachine.animator.Play("Walk");
+        }
+
+        attackTime = Random.Range(stateMachine.maxTimeBetweenAttacks * .66f, stateMachine.maxTimeBetweenAttacks);
 
         stateMachine.GetAgent().isStopped = false;
         checkPlayerPositionCoroutine = stateMachine.StartCoroutine(CheckPlayerPosition());
