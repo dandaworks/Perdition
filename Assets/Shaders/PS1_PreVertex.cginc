@@ -5,7 +5,7 @@ inline Varyings PreVertex(Attributes i, float jitterGridScale, float2 screenSize
 	UNITY_TRANSFER_INSTANCE_ID(i, o);
 
 	// VertexPositionInputs vInputs = GetPS1VertexPositionInputs(i.positionOS);
-	vertexInput = GetPS1VertexPositionInputs(i.positionOS, jitterGridScale, screenSize.xy);
+	vertexInput = GetPS1VertexPositionInputs(i.positionOS.xyz, jitterGridScale, screenSize.xy);
 
 	o.positionCS = vertexInput.positionCS;
 #ifndef _PS1_PREVERTEX_NO_POSITION_WS

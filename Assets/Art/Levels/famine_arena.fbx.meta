@@ -3,7 +3,42 @@ guid: c820e841cb7a5c44a9f9208c86d7dc74
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 0e68cf3ee15a6974ea5aaba7ffdd9e92, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: backdrop
+    second: {fileID: 2100000, guid: 99a3a9f1b357a564b8959cd777310a05, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ground
+    second: {fileID: 2100000, guid: 9d9adc0505ffd98488e2ac4e0da7420e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: leaves
+    second: {fileID: 2100000, guid: 4f99ca01b3552504dba44c291b939574, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: poison
+    second: {fileID: 2100000, guid: 175f4b23a82111a4d8037d013aad518e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: water
+    second: {fileID: 2100000, guid: 0164af1f521377e4089f3033bf90b4e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood
+    second: {fileID: 2100000, guid: 448ee8268b9c20b40b615c0718209f77, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

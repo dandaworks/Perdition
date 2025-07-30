@@ -1,4 +1,4 @@
-#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
+// #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
 
 inline void PS1_InitializeInputData(Varyings input, half3 normalTS, out InputData inputData)
 {

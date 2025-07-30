@@ -85,6 +85,7 @@ Shader "Custom/URP/PS1"
 	// #pragma instancing_options renderinglayer
 
 	#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+	#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
 	#include "PS1.cginc"
 
 	CBUFFER_START(UnityPerMaterial)
@@ -121,6 +122,27 @@ Shader "Custom/URP/PS1"
 
 	// #undef _PS1_PIXPARAMS
 
+	// #pragma shader_feature_fragment _ _PS1_POINTCLAMP
+	#pragma shader_feature_fragment _ _PS1_SAMPLER_POINTCLAMP _PS1_SAMPLER_POINTREPEAT
+
+#if _PS1_SAMPLER_POINTCLAMP
+	#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/GlobalSamplers.hlsl"
+
+	#define _PS1_SAMPLER sampler_PointClamp
+	#define _PS1_SAMPLER_BUMP sampler_PointClamp
+	#define _PS1_SAMPLER_EMISSION sampler_PointClamp
+#elif _PS1_SAMPLER_POINTREPEAT
+	#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/GlobalSamplers.hlsl"
+
+	#define _PS1_SAMPLER sampler_PointRepeat
+	#define _PS1_SAMPLER_BUMP sampler_PointRepeat
+	#define _PS1_SAMPLER_EMISSION sampler_PointRepeat
+#else
+	#define _PS1_SAMPLER sampler_BaseMap
+	#define _PS1_SAMPLER_BUMP sampler_BumpMap
+	#define _PS1_SAMPLER_EMISSION sampler_BumpMap
+#endif
+
 	ENDHLSL
 
 	SubShader
@@ -130,14 +152,14 @@ Shader "Custom/URP/PS1"
 			"RenderType" = "Opaque"
 			"RenderPipeline" = "UniversalPipeline"
 			// "UniversalMaterialType" = "Lit"
-			"Queue" = "Geometry"
+			// "Queue" = "Geometry"
 			// "IgnoreProjector" = "True"
 		}
 		// LOD 300
 
 		Pass
 		{
-			Name "ForwardPass"
+			Name "ForwardLit"
 			Tags
 			{
 				"LightMode" = "UniversalForward"
@@ -166,32 +188,12 @@ Shader "Custom/URP/PS1"
 			#pragma multi_compile_fog
 
 			#include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ProbeVolumeVariants.hlsl"
+			#include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/RenderingLayers.hlsl"
 
 			#pragma multi_compile_instancing
 			#pragma instancing_options renderinglayer
 
-			// #pragma shader_feature_fragment _ _PS1_POINTCLAMP
-			#pragma shader_feature_local_fragment _ _PS1_SAMPLER_POINTCLAMP _PS1_SAMPLER_POINTREPEAT
-
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
-
-		#if _PS1_SAMPLER_POINTCLAMP
-			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/GlobalSamplers.hlsl"
-
-			#define _PS1_SAMPLER sampler_PointClamp
-			#define _PS1_SAMPLER_BUMP sampler_PointClamp
-			#define _PS1_SAMPLER_EMISSION sampler_PointClamp
-		#elif _PS1_SAMPLER_POINTREPEAT
-			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/GlobalSamplers.hlsl"
-
-			#define _PS1_SAMPLER sampler_PointRepeat
-			#define _PS1_SAMPLER_BUMP sampler_PointRepeat
-			#define _PS1_SAMPLER_EMISSION sampler_PointRepeat
-		#else
-			#define _PS1_SAMPLER sampler_BaseMap
-			#define _PS1_SAMPLER_BUMP sampler_BumpMap
-			#define _PS1_SAMPLER_EMISSION sampler_BumpMap
-		#endif
 
 			#pragma vertex Vertex
 			#pragma fragment Fragment
@@ -303,7 +305,7 @@ Shader "Custom/URP/PS1"
 				o.normalWS = NormalizeNormalPerVertex(normalInput.normalWS);
 			#endif
 
-			    OUTPUT_LIGHTMAP_UV(input.staticLightmapUV, unity_LightmapST, o.staticLightmapUV);
+				OUTPUT_LIGHTMAP_UV(input.staticLightmapUV, unity_LightmapST, o.staticLightmapUV);
 			#ifdef DYNAMICLIGHTMAP_ON
 				o.dynamicLightmapUV = input.dynamicLightmapUV.xy * unity_DynamicLightmapST.xy + unity_DynamicLightmapST.zw;
 			#endif
@@ -327,7 +329,13 @@ Shader "Custom/URP/PS1"
 				return o;
 			}
 
-			half4 Fragment(Varyings v) : SV_Target
+			void Fragment(
+				Varyings v
+				, out half4 outCol : SV_Target0
+			#ifdef _WRITE_RENDERING_LAYERS
+				, out float4 outRenderingLayers : SV_Target1
+			#endif
+			)
 			{
 				UNITY_SETUP_INSTANCE_ID(v);
 				UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(v);
@@ -348,7 +356,7 @@ Shader "Custom/URP/PS1"
 				lightData.normalWS = NormalizeNormalPerPixel(lightData.normalWS);
 				PS1_InitializeBakedGIData(v, lightData);
 
-				SETUP_DEBUG_TEXTURE_DATA(lightData, UNDO_TRANSFORM_TEX(i.uv, _BaseMap));
+				SETUP_DEBUG_TEXTURE_DATA(lightData, UNDO_TRANSFORM_TEX(v.uv, _BaseMap));
 
 			#if defined(_DBUFFER)
 				ApplyDecalToSurfaceData(i.positionCS, surfaceData, lightData);
@@ -372,16 +380,280 @@ Shader "Custom/URP/PS1"
 			#endif
 			#endif
 
-				half4 col = UniversalFragmentBlinnPhong(lightData, surface) + unity_AmbientSky;
-				// half4 col = UniversalFragmentPBR(lightData, surface) + unity_AmbientSky;
-				col.rgb = MixFog(col.rgb, lightData.fogCoord);
-				col.a = OutputAlpha(col.a, IsSurfaceTypeTransparent(_Surface));
+				outCol = UniversalFragmentBlinnPhong(lightData, surface) + unity_AmbientSky;
+				// half4 outCol = UniversalFragmentPBR(lightData, surface) + unity_AmbientSky;
+				outCol.rgb = MixFog(outCol.rgb, lightData.fogCoord);
+				outCol.a = OutputAlpha(outCol.a, IsSurfaceTypeTransparent(_Surface));
 
 			// #if defined(LIGHTMAP_ON)
-				return col;
+				// return outCol;
 			// #else
 				// return half4(1.0, 0.0, 0.0, 1.0);
 			// #endif
+
+			#ifdef _WRITE_RENDERING_LAYERS
+				uint renderingLayers = GetMeshRenderingLayer();
+				outRenderingLayers = float4(EncodeMeshRenderingLayer(renderingLayers), 0, 0, 0);
+			#endif
+			}
+
+			ENDHLSL
+		}
+
+		/*
+		Pass
+		{
+			Name "DepthOnly"
+			Tags
+			{
+				"LightMode" = "DepthOnly"
+			}
+
+			// -------------------------------------
+			// Render State Commands
+			ZWrite On
+			ColorMask R
+			Cull[_Cull]
+
+			HLSLPROGRAM
+
+			#pragma target 2.0
+
+			// -------------------------------------
+			// Shader Stages
+			#pragma vertex PS1_DepthOnlyVertex
+			#pragma fragment PS1_DepthOnlyVertex
+
+			// -------------------------------------
+			// Material Keywords
+			#pragma shader_feature_local _ALPHATEST_ON
+			#pragma shader_feature_local_fragment _GLOSSINESS_FROM_BASE_ALPHA
+
+			// -------------------------------------
+			// Unity defined keywords
+			#pragma multi_compile _ LOD_FADE_CROSSFADE
+
+			//--------------------------------------
+			// GPU Instancing
+			#pragma multi_compile_instancing
+			#include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
+
+			// -------------------------------------
+			// Includes
+			// #include "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
+
+			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+		#if defined(LOD_FADE_CROSSFADE)
+			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
+		#endif
+
+			struct Attributes
+			{
+				float3 positionOS    : POSITION;
+
+				float3 normalOS      : NORMAL;
+				float4 tangentOS     : TANGENT;
+
+				float2 uv            : TEXCOORD0;
+
+				float2 staticLightmapUV        : TEXCOORD1;
+				float2 dynamicLightmapUV       : TEXCOORD2;
+
+				UNITY_VERTEX_INPUT_INSTANCE_ID
+			};
+
+			struct Varyings
+			{
+				float4 positionCS    : SV_POSITION;
+
+				float2 uv            : TEXCOORD0;
+				float3 positionWS    : TEXCOORD1;
+
+			#ifdef _NORMALMAP
+				half4 normalWS       : TEXCOORD2;
+				half4 tangentWS      : TEXCOORD3;
+				half4 bitangentWS    : TEXCOORD4;
+			#else
+				half3 normalWS       : TEXCOORD2;
+			#endif
+
+			// #if defined(REQUIRES_WORLD_SPACE_TANGENT_INTERPOLATOR)
+			// 	half4 tangentWS      : TEXCOORD3;
+			// #endif
+
+			#ifdef _ADDITIONAL_LIGHTS_VERTEX
+				half4 fogFactorAndVertexLight : TEXCOORD5; // x: fogFactor, yzw: vertex light
+			#else
+				half fogFactor       : TEXCOORD5;
+			#endif
+
+				DECLARE_LIGHTMAP_OR_SH(staticLightmapUV, vertexSH, 6);
+
+			#ifdef DYNAMICLIGHTMAP_ON
+				float2 dynamicLightmapUV     : TEXCOORD7;
+			#endif
+
+			#if defined(REQUIRES_TANGENT_SPACE_VIEW_DIR_INTERPOLATOR)
+				half3 viewDirTS      : TEXCOORD8;
+			#endif
+
+			#ifdef USE_APV_PROBE_OCCLUSION
+				float4 probeOcclusion : TEXCOORD9;
+			#endif
+
+			#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
+				float4 shadowCoord   : TEXCOORD10;
+			#endif
+
+				UNITY_VERTEX_INPUT_INSTANCE_ID
+				UNITY_VERTEX_OUTPUT_STEREO
+			};
+
+			#define _PS1_PREVERTEX_NO_POSITION_WS
+			#define _PS1_PREVERTEX_NO_NORMAL_WS
+
+			#include "PS1_PreVertex.cginc"
+			#include "PS1_FragHelper.cginc"
+
+			Varyings PS1_DepthOnlyVertex(Attributes i)
+			{
+				VertexPositionInputs vertexInput = (VertexPositionInputs)0;
+
+				UNITY_SETUP_INSTANCE_ID(i);
+				Varyings o = PreVertex(i, _JitterGridScale, _PS1_PIXPARAMS.xy, vertexInput);
+				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
+
+			#if defined(_ALPHATEST_ON)
+				o.uv = TRANSFORM_TEX(i.texcoord, _BaseMap);
+			#endif
+
+				o.positionCS = vertexInput.positionCS;
+
+				return o;
+			}
+
+			half PS1_DepthOnlyFragment(Varyings i) : SV_TARGET
+			{
+				UNITY_SETUP_INSTANCE_ID(i);
+				UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(i);
+
+			#if defined(_ALPHATEST_ON)
+				Alpha(SampleAlbedoAlpha(i.uv, TEXTURE2D_ARGS(_BaseMap, _PS1_SAMPLER)).a, _BaseColor, _Cutoff);
+			#endif
+
+			#if defined(LOD_FADE_CROSSFADE)
+				LODFadeCrossFade(i.positionCS);
+			#endif
+
+				return i.positionCS.z;
+			}
+
+			#undef _PS1_PREVERTEX_NO_POSITION_WS
+			#undef _PS1_PREVERTEX_NO_NORMAL_WS
+
+			ENDHLSL
+		}
+		*/
+
+		Pass
+		{
+			Name "DepthOnly"
+			Tags
+			{
+				"LightMode" = "DepthOnly"
+			}
+
+			// -------------------------------------
+			// Render State Commands
+			ZWrite On
+			ColorMask R
+			Cull[_Cull]
+
+			HLSLPROGRAM
+
+			#pragma target 2.0
+
+			// -------------------------------------
+			// Shader Stages
+			#pragma vertex DepthOnlyVertex
+			#pragma fragment DepthOnlyFragment
+
+			// -------------------------------------
+			// Material Keywords
+			#pragma shader_feature_local _ALPHATEST_ON
+			#pragma shader_feature_local_fragment _GLOSSINESS_FROM_BASE_ALPHA
+
+			// -------------------------------------
+			// Unity defined keywords
+			#pragma multi_compile _ LOD_FADE_CROSSFADE
+
+			//--------------------------------------
+			// GPU Instancing
+			#pragma multi_compile_instancing
+			#include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
+
+			// -------------------------------------
+			// Includes
+			// #include "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
+			// #include "Packages/com.unity.render-pipelines.universal/Shaders/DepthOnlyPass.hlsl"
+
+			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+
+		#if defined(LOD_FADE_CROSSFADE)
+			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
+		#endif
+
+			struct Attributes
+			{
+				float4 position     : POSITION;
+				float2 texcoord     : TEXCOORD0;
+
+				UNITY_VERTEX_INPUT_INSTANCE_ID
+			};
+
+			struct Varyings
+			{
+			#if defined(_ALPHATEST_ON)
+				float2 uv           : TEXCOORD0;
+			#endif
+				float4 positionCS   : SV_POSITION;
+
+				UNITY_VERTEX_INPUT_INSTANCE_ID
+				UNITY_VERTEX_OUTPUT_STEREO
+			};
+
+			Varyings DepthOnlyVertex(Attributes i)
+			{
+				Varyings o = (Varyings)0;
+
+				UNITY_SETUP_INSTANCE_ID(i);
+				UNITY_TRANSFER_INSTANCE_ID(i, o);
+				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
+
+			#if defined(_ALPHATEST_ON)
+				o.uv = TRANSFORM_TEX(i.texcoord, _BaseMap);
+			#endif
+
+				o.positionCS = TransformObjectToHClip(i.position.xyz);
+				o.positionCS = ApplyClipSpaceJitter(o.positionCS, _JitterGridScale, _PS1_PIXPARAMS.xy);
+
+				return o;
+			}
+
+			half DepthOnlyFragment(Varyings i) : SV_TARGET
+			{
+				UNITY_SETUP_INSTANCE_ID(i);
+				UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(i);
+
+				#if defined(_ALPHATEST_ON)
+					Alpha(SampleAlbedoAlpha(i.uv, TEXTURE2D_ARGS(_BaseMap, sampler_BaseMap)).a, _BaseColor, _Cutoff);
+				#endif
+
+				#if defined(LOD_FADE_CROSSFADE)
+					LODFadeCrossFade(i.positionCS);
+				#endif
+
+				return i.positionCS.z;
 			}
 
 			ENDHLSL
