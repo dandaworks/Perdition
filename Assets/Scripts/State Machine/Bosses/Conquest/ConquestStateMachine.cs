@@ -3,28 +3,35 @@ using System.Collections.Generic;
 
 public class ConquestStateMachine : BossStateMachine
 {
-    [SerializeField] float pushForce;
-    public float GetPushForce() { return pushForce; }
+    public Vector3 IdlePosition;
+    public Vector3 StartPosition;
+
+    //[SerializeField] float pushForce;
+    //public float GetPushForce() { return pushForce; }
 
     ConquestStatePushAttack statePushAttack;
     ConquestStateSummonAttack stateSummonAttack;
     ConquestStateSwordAttack stateSwordAttack;
+    ConquestStateIdle stateIdle;
+    public override BaseState InitialState()
+    {
+        return stateIdle;
+    }
 
     [Header("Summon Skeleton Minions")]
-    [SerializeField] Vector3 spawnPositionsLocation;
-    public Vector3 GetSpawnLocation() { return spawnPositionsLocation; }
-    [SerializeField] Vector3 spawnPositionsSize;
-    public Vector3 GetSpawnSize() { return spawnPositionsSize; }
+
+    public Vector3[] spawnPositions;
 
     [SerializeField] GameObject conquestSummon;
     public GameObject GetConquestSummon() { return conquestSummon; }
     List<GameObject> summonedGameobjects = new List<GameObject>();
     public List<GameObject> GetSummonedGameObjectsList() { return summonedGameobjects; }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawCube(spawnPositionsLocation, spawnPositionsSize);
-    }
+    [Header("Summon Blast")]
+    [SerializeField] GameObject summonable;
+    public GameObject GetSummonable() { return summonable; }
+    [SerializeField] Transform summonPosition;
+    public Transform GetSummonPosition() { return summonPosition; }
 
     public override void InstantiateStates()
     {
@@ -32,13 +39,14 @@ public class ConquestStateMachine : BossStateMachine
         statePushAttack = new ConquestStatePushAttack(this);
         stateSummonAttack = new ConquestStateSummonAttack(this);
         stateSwordAttack = new ConquestStateSwordAttack(this);
+        stateIdle = new ConquestStateIdle(this);
     }
 
     public override void ChooseAttack()
     {
         base.ChooseAttack();
 
-        if (Random.Range(0, 10) < 3)
+        if (Random.Range(0, 10) < 5)
         {
             bool test = true;
          
@@ -53,15 +61,6 @@ public class ConquestStateMachine : BossStateMachine
             if (test)
             {
                 ChangeState(stateSummonAttack);
-                return;
-            }
-        }
-
-        if (Vector3.Distance(transform.position, player.transform.position) < detectionRange * .85f)
-        {
-            if (Random.Range(0, 10) < 6)
-            {
-                ChangeState(statePushAttack);
                 return;
             }
         }

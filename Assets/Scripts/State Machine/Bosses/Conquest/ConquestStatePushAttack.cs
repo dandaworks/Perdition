@@ -44,7 +44,7 @@ public class ConquestStatePushAttack : BaseState
         {
             float currentForce = timer / timerMax;
 
-            playerController.Move(pushDirection * stateMachine.GetPushForce() * currentForce * Time.deltaTime);
+            //playerController.Move(pushDirection * stateMachine.GetPushForce() * currentForce * Time.deltaTime);
 
             timer -= Time.deltaTime;
             yield return null;
