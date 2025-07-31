@@ -1334,7 +1334,7 @@ MonoBehaviour:
   dashCooldown: 0
   isDashing: 0
   cameraPivot: {fileID: 5468538871146245395}
-  cameraSensitivity: {x: 1, y: 1}
+  cameraSensitivity: {x: 0.8, y: 0.2}
   cameraDistance: 3
   minY: -40
   maxY: 80
