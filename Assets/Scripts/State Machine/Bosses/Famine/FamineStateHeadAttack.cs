@@ -35,8 +35,17 @@ public class FamineStateHeadAttack : BaseState
             thisReference.GetComponent<FamineHeadFollow>()?.SetTarget(stateMachine.player);
         }
 
-        if (timer <= 0) { if (thisReference) { Object.Destroy(thisReference); } } else { timer -= Time.deltaTime; }
+        if (timer <= 0) { stateMachine.ChangeState(stateMachine.stateFollow); return; } else { timer -= Time.deltaTime; }
 
         if (objectSummoned && thisReference == null) { stateMachine.ChangeState(stateMachine.stateFollow); }
     }
+
+    public override void thisEnd()
+{
+    base.thisEnd();
+
+    if (thisReference)
+    {
+        Object.Destroy(thisReference);
+    } }
 }

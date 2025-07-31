@@ -70,11 +70,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be579afb314641d45b2b457e0c86c364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRange: 10
+  detectionRange: 40
   player: {fileID: 0}
   contactDamage: 10
   maxHealth: 50
+  maxTimeBetweenAttacks: 3
+  animator: {fileID: 0}
   pushForce: 0
+  spawnPositionsLocation: {x: 204.52, y: 6.21, z: 247.85}
+  spawnPositionsSize: {x: 42.49, y: 1, z: 47.59}
+  conquestSummon: {fileID: 0}
+  summonable: {fileID: 1441787367133266535, guid: f22b004e287c61146b1bc903035a0118, type: 3}
+  summonPosition: {fileID: 0}
 --- !u!195 &496571418660231659
 NavMeshAgent:
   m_ObjectHideFlags: 0
