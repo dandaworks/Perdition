@@ -21,7 +21,9 @@ public class PlayerMovement : MonoBehaviour
 
     // Camera
     public Transform cameraPivot;
+    [Range(0.01f, 5f)]
     public float cameraSensitivity = 2f;
+    [Range(0f, 6f)]
     public float cameraDistance = 3f;
     public float minY = -40f;
     public float maxY = 80f;
@@ -30,17 +32,24 @@ public class PlayerMovement : MonoBehaviour
 
     // Stamina
     [Header("Stamina")]
+    [Range(0f, 100f)]
     public float maxStamina = 100f;
+    [Range(0f, 100f)]
     public float currentStamina;
+    [Range(0f, 60f)]
     public float dashStaminaCost = 30f;
+    [Range(0f, 50f)]
     public float staminaRegenRate = 20f;
+    [Range(0f, 10f)]
     public float lowStaminaRegenRate = 5f;
     public float lowStaminaThreshold = 0f;
     private bool outOfStamina = false;
 
     //Health
     [Header("Health")]
+    [Range(0f, 100f)]
     public float maxPlayerHealth = 100f;
+    [Range(0f, 100f)]
     public float currentPlayerHealth;
     private bool isAlive = true;
     public GameObject deathUI;
@@ -49,7 +58,9 @@ public class PlayerMovement : MonoBehaviour
     public RectTransform healthBar;
     public RectTransform staminaBar; // assign in inspector
 
+    [Range(0.01f, 16f)]
     public float healthBarLerpSpeed = 6f;
+    [Range(0.01f, 16f)]
     public float staminaBarLerpSpeed = 6f;
 
     [Header("Debug Only")]
