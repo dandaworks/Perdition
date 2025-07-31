@@ -127,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             if (!isDashing)
-                controller.Move(move * moveSpeed * Time.deltaTime);
+                controller.Move(moveSpeed * Time.deltaTime * move);
 
             velocity.y += gravity * Time.deltaTime;
             controller.Move(velocity * Time.deltaTime);
@@ -162,7 +162,7 @@ public class PlayerMovement : MonoBehaviour
 
         while (elapsed < dashDuration)
         {
-            controller.Move(dashDirection * dashSpeed * Time.deltaTime);
+            controller.Move(dashSpeed * Time.deltaTime * dashDirection);
             elapsed += Time.deltaTime;
             yield return null;
         }
