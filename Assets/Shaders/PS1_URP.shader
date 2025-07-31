@@ -89,7 +89,6 @@ Shader "Custom/URP/PS1"
 	// #pragma instancing_options renderinglayer
 
 	#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-	#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
 	#include "PS1.cginc"
 
 	CBUFFER_START(UnityPerMaterial)
@@ -129,6 +128,8 @@ Shader "Custom/URP/PS1"
 	// #pragma shader_feature_fragment _ _PS1_POINTCLAMP
 	#pragma shader_feature_fragment _ _PS1_SAMPLER_POINTCLAMP _PS1_SAMPLER_POINTREPEAT
 
+	#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
+
 #if _PS1_SAMPLER_POINTCLAMP
 	#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/GlobalSamplers.hlsl"
 
@@ -144,7 +145,7 @@ Shader "Custom/URP/PS1"
 #else
 	#define _PS1_SAMPLER sampler_BaseMap
 	#define _PS1_SAMPLER_BUMP sampler_BumpMap
-	#define _PS1_SAMPLER_EMISSION sampler_BumpMap
+	#define _PS1_SAMPLER_EMISSION sampler_EmissionMap
 #endif
 
 	ENDHLSL
