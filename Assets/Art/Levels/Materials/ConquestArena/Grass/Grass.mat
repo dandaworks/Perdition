@@ -7,12 +7,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: torchbase
+  m_Name: Grass
   m_Shader: {fileID: 4800000, guid: 7d3ac0897d76f7440841ca9fa00e1f46, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _PS1_AFFINE
   - _PS1_JITTER
   - _PS1_PIXELSNAP
   - _PS1_SAMPLER_POINTREPEAT
@@ -29,7 +28,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: dd4fc185c98059c40b16072eb5ee34b4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6c6a5af7b1ee6c14fa29535ca872e4a5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -87,7 +86,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AddPrecomputedVelocity: 0
-    - _Affine: 1
+    - _Affine: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Blend: 0
@@ -130,7 +129,7 @@ Material:
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &1227486100515981505
+--- !u!114 &1766771685272554234
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
