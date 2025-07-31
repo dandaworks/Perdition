@@ -15,6 +15,7 @@ public class PlayerStateMeleeStrong : BaseState
     {
         base.thisStart();
 
+        stateMachine.audioSource.PlayOneShot(stateMachine.heavyAttack);
         stateMachine.propSword.SetActive(false);
         stateMachine.weaponSword.SetActive(true);
 

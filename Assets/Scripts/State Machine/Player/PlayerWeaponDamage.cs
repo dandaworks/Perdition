@@ -5,6 +5,9 @@ public class PlayerWeaponDamage : MonoBehaviour
 {
     [SerializeField] int damage;
 
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip audioClip;
+
     List<string> names;
 
     private void OnTriggerEnter(Collider other)
@@ -17,6 +20,7 @@ public class PlayerWeaponDamage : MonoBehaviour
 
         if (a)
         {
+            audioSource.PlayOneShot(audioClip);
             a.TakeDamage(damage);
         }
 
@@ -26,6 +30,7 @@ public class PlayerWeaponDamage : MonoBehaviour
         {
             Debug.Log("Hit!");
 
+            audioSource.PlayOneShot(audioClip);
             b.TakeDamage(damage);
         }
     }

@@ -16,6 +16,7 @@ public class PlayerStateJump : PlayerStateWalk
         Vector3 currentVelocity = new Vector3(stateMachine.GetVelocity().x, Mathf.Sqrt(stateMachine.jumpHeight * -2f * stateMachine.gravity), stateMachine.GetVelocity().z);
 
         lastY = float.MinValue;
+        stateMachine.audioSource.PlayOneShot(stateMachine.jump);
 
         stateMachine.SetVelocity(currentVelocity);
         stateMachine.animator.Play("Jump");

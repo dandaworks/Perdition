@@ -13,6 +13,7 @@ public class PlayerStateDash : BaseState
     {
         base.thisStart();
         stateMachine.animator.Play("Dash");
+        stateMachine.audioSource.PlayOneShot(stateMachine.dash);
 
         stateMachine.StartCoroutine(DashRoutine());
     }

@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class OpeningSceneLogic : MonoBehaviour
 {
-    float timer = 4f;
+    float timer = 10f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()

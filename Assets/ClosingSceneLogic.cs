@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class ClosingSceneLogic : MonoBehaviour
 {
-    float timer = 4f;
+    float timer = 7f;
 
     private void Update()
     {

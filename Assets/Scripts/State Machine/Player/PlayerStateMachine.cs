@@ -123,6 +123,13 @@ public class PlayerStateMachine : BaseStateMachine
     public GameObject propSpear;
     public GameObject weaponSpear;
 
+    public AudioSource audioSource;
+
+    public AudioClip jump;
+    public AudioClip dash;
+    public AudioClip lightAttack;
+    public AudioClip heavyAttack;
+
 
     private void OnEnable()
     {
@@ -188,7 +195,11 @@ public class PlayerStateMachine : BaseStateMachine
     {
         base.UpdateFunctions();
         
-        UpdateCamera();
+        if (isAlive)
+        {
+            UpdateCamera();
+        }
+        
         RegenerateStamina();
         UpdateUI();
 

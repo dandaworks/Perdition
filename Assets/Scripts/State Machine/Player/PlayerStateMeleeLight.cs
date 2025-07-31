@@ -15,6 +15,7 @@ public class PlayerStateMeleeLight : BaseState
     {
         base.thisStart();
 
+        stateMachine.audioSource.PlayOneShot(stateMachine.lightAttack);
         stateMachine.propSpear.SetActive(false);
         stateMachine.weaponSpear.SetActive(true);
 
