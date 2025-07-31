@@ -79,9 +79,10 @@ GameObject:
   - component: {fileID: 6479118644912377604}
   - component: {fileID: 3957787044648684524}
   - component: {fileID: 481063487918317455}
+  - component: {fileID: 5149728917645679670}
   m_Layer: 0
   m_Name: Minion
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,6 +167,33 @@ MonoBehaviour:
   maxTimeBetweenAttacks: 3
   animator: {fileID: 8644551549745268877}
   attack: {fileID: 4003948607919443124}
+--- !u!54 &5149728917645679670
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9204579116681941205}
+  serializedVersion: 4
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &57221280541260322
 PrefabInstance:
   m_ObjectHideFlags: 0

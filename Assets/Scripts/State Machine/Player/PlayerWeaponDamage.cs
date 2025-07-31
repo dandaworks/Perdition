@@ -24,6 +24,8 @@ public class PlayerWeaponDamage : MonoBehaviour
 
         if (b)
         {
+            Debug.Log("Hit!");
+
             b.TakeDamage(damage);
         }
     }
