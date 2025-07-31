@@ -167,7 +167,6 @@ Shader "Custom/URP/PS1"
 			Tags
 			{
 				"LightMode" = "UniversalForward"
-				"Queue" = "[_QueueOffset]"
 			}
 
 			// Blend states
@@ -179,6 +178,7 @@ Shader "Custom/URP/PS1"
 
 			HLSLPROGRAM
 
+			#pragma shader_feature_local_fragment _ALPHATEST_ON
 			#pragma shader_feature_local _NORMALMAP
 			#pragma shader_feature_local_fragment _EMISSION
 
