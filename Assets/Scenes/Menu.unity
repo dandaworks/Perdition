@@ -525,7 +525,11 @@ MonoBehaviour:
   playerTag: Player
   onCollide: 1
   chooseScene: 0
-  chooseSceneIndex: 0
+  timer: 0
+  waitTime: 5
+  SceneToLoad:
+    m_SceneAsset: {fileID: 0}
+    m_SceneName: 
 --- !u!1 &526479797
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,7 +699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 660118548}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &574188049
@@ -798,7 +802,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 660118553}
-        m_TargetAssemblyTypeName: NextLevel, Assembly-CSharp
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 1
         m_Arguments:
@@ -862,7 +866,11 @@ MonoBehaviour:
   playerTag: Player
   onCollide: 0
   chooseScene: 0
-  chooseSceneIndex: 0
+  timer: 0
+  waitTime: 5
+  SceneToLoad:
+    m_SceneAsset: {fileID: 102900000, guid: e665e01941ca2fd4c916edae4d33e5bb, type: 3}
+    m_SceneName: Opening
 --- !u!1 &961739749
 GameObject:
   m_ObjectHideFlags: 0
@@ -1204,7 +1212,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -342.5, y: -148.9}
+  m_AnchoredPosition: {x: -342.5, y: -104}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1094185444
@@ -1227,14 +1235,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Move: W A S D
+  m_text: 'Move: W A S D / Left Joystick
 
-    Jump: Spacebar
+    Look: Mouse / RIght Joystick
 
-    Attack: Left Mouse Click
+    Jump:
+    Spacebar / Button South
 
-    Shift:
-    Dash'
+    Light Attack: Left Mouse Click / Button West
+
+    Heavy
+    Attack: Right Mouse Click / Button North
+
+    Dash: Shift / Button East'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

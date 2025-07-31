@@ -78,7 +78,7 @@ public class BossStateMachine : BaseStateMachine
         {
             if (Time.time - lastDamageTime >= damageCooldown)
             {
-                PlayerMovement pm = other.GetComponent<PlayerMovement>();
+                PlayerStateMachine pm = other.GetComponent<PlayerStateMachine>();
                 if (pm != null)
                 {
                     pm.PlayerTakeDamage(contactDamage);
@@ -102,7 +102,7 @@ public class BossStateMachine : BaseStateMachine
         }
     }
 
-    void Die()
+    public virtual void Die()
     {
         isDead = true;
         ChangeState(stateDead);

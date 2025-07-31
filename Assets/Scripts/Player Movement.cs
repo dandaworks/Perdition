@@ -207,7 +207,7 @@ public class PlayerMovement : MonoBehaviour
         cameraPivot.rotation = Quaternion.Euler(pitch, yaw, 0);
     }
 
-    public void PlayerTakeDamage(float amount)
+    /*public void PlayerTakeDamage(float amount)
     {
         if (!isDashing)
         {
@@ -220,7 +220,7 @@ public class PlayerMovement : MonoBehaviour
             GameOver();
             Debug.Log("GameOver");
         }
-    }
+    }*/
 
     void UpdateUI()
     {

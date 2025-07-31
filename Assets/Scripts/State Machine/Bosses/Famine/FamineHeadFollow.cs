@@ -18,7 +18,7 @@ public class FamineHeadFollow : MonoBehaviour
     {
         if (other.gameObject == target.gameObject)
         {
-            PlayerMovement player = target.gameObject.GetComponent<PlayerMovement>();
+            PlayerStateMachine player = target.gameObject.GetComponent<PlayerStateMachine>();
             if (player)
             {
                 player.PlayerTakeDamage(damage);

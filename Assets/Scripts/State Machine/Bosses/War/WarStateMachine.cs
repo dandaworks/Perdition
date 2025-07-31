@@ -58,4 +58,11 @@ public class WarStateMachine : BossStateMachine
     {
         ChangeState(stateFlurryStrikes);
     }
+
+    public override void Die()
+    {
+        PersistentData.defeatedWar = true;
+
+        base.Die();
+    }
 }

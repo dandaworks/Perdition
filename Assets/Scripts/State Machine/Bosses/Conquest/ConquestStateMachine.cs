@@ -67,4 +67,11 @@ public class ConquestStateMachine : BossStateMachine
 
         ChangeState(stateSwordAttack);
     }
+
+    public override void Die()
+    {
+        PersistentData.defeatedConquest = true;
+
+        base.Die();
+    }
 }

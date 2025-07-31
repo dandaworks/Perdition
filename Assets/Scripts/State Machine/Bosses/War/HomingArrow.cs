@@ -45,7 +45,7 @@ public class HomingArrow : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerMovement pm = other.GetComponent<PlayerMovement>();
+            PlayerStateMachine pm = other.GetComponent<PlayerStateMachine>();
             if (pm != null)
             {
                 pm.PlayerTakeDamage(damage);

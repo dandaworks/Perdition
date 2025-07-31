@@ -33,4 +33,11 @@ public class FamineStateMachine : BossStateMachine
             ChangeState(stateHeadAttack);
         }
     }
+
+    public override void Die()
+    {
+        PersistentData.defeatedFamine = true;
+
+        base.Die();
+    }
 }
