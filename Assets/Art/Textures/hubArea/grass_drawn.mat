@@ -103,6 +103,7 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
+    - _CastShadows: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -119,6 +120,7 @@ Material:
     - _JitterGridScale: 20
     - _Metallic: 0
     - _OcclusionStrength: 1
+    - _PS1_SAMPLER: 2
     - _Parallax: 0.005
     - _PixelSnap: 1
     - _QueueOffset: 0

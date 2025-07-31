@@ -462,7 +462,9 @@ MonoBehaviour:
   chooseScene: 1
   timer: 1
   waitTime: 5
-  chooseSceneIndex: 0
+  SceneToLoad:
+    m_SceneAsset: {fileID: 0}
+    m_SceneName: 
 --- !u!1 &2420425855027728536
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,7 +1202,7 @@ MonoBehaviour:
   dashCooldown: 1
   isDashing: 0
   cameraPivot: {fileID: 4226956834499690203}
-  cameraSensitivity: 2
+  cameraSensitivity: {x: 4, y: 1}
   cameraDistance: 3
   minY: -40
   maxY: 80
@@ -1210,15 +1212,17 @@ MonoBehaviour:
   staminaRegenRate: 20
   lowStaminaRegenRate: 5
   lowStaminaThreshold: 0
-  staminaBar: {fileID: 3084668768101212307}
   maxPlayerHealth: 100
   currentPlayerHealth: 100
-  healthBar: {fileID: 8055389818739096950}
   deathUI: {fileID: 1393515293309567671}
+  healthBar: {fileID: 8055389818739096950}
+  staminaBar: {fileID: 3084668768101212307}
+  healthBarLerpSpeed: 6
+  staminaBarLerpSpeed: 6
   healthBarInitialX: 0
   staminaBarInitialX: 0
-  healthBarTempX: 0
-  staminaBarTempX: 0
+  healthBarLerpX: 0
+  staminaBarLerpX: 0
 --- !u!1 &8198080404780364819
 GameObject:
   m_ObjectHideFlags: 0
