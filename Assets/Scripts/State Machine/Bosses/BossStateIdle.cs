@@ -9,6 +9,15 @@ public class BossStateIdle : BaseState
         stateMachine = (BossStateMachine) sm;
     }
 
+    public override void thisStart()
+    {
+        base.thisStart();
+        if (stateMachine.animator)
+        {
+            stateMachine.animator.Play("Idle");
+        }
+    }
+
     public override void thisUpdate()
     {
         base.thisUpdate();

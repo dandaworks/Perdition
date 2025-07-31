@@ -9,22 +9,34 @@ public class FamineStateHeadAttack : BaseState
     }
 
     GameObject thisReference; // stored copy of enemy head object
+
+    bool objectSummoned;
     float timer;
+    float maxTimer = 8f;
 
     public override void thisStart()
     {
         base.thisStart();
 
-        timer = 5f;
-        thisReference = Object.Instantiate(stateMachine.GetHeadAttackObject(), stateMachine.transform.position, Quaternion.identity);
+        timer = maxTimer;
+        objectSummoned = false;
+
+        stateMachine.animator.Play("HeadAttack");
     }
 
     public override void thisUpdate()
     {
         base.thisUpdate();
 
+        if (!objectSummoned && (maxTimer - timer) >= .66f) 
+        {
+            objectSummoned = true;
+            thisReference = Object.Instantiate(stateMachine.GetHeadAttackObject(), stateMachine.headposition.position, Quaternion.identity);
+            thisReference.GetComponent<FamineHeadFollow>()?.SetTarget(stateMachine.player);
+        }
+
         if (timer <= 0) { if (thisReference) { Object.Destroy(thisReference); } } else { timer -= Time.deltaTime; }
 
-        if (thisReference == null) { stateMachine.ChangeState(stateMachine.stateFollow); }
+        if (objectSummoned && thisReference == null) { stateMachine.ChangeState(stateMachine.stateFollow); }
     }
 }

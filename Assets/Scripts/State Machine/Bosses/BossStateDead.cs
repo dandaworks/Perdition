@@ -13,7 +13,9 @@ public class BossStateDead : BaseState
     {
         base.thisStart();
 
-        Debug.Log($"{stateMachine.gameObject.name} has died!");
+        if (stateMachine.animator) { stateMachine.animator.Play("Dead"); }
+
+        //Debug.Log($"{stateMachine.gameObject.name} has died!");
         stateMachine.GetComponent<Collider>().enabled = false;
         // Optional: Destroy after delay
         Object.Destroy(stateMachine.gameObject, 2f);

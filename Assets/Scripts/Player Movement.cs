@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI; // For UI bar
+using piqey.Utilities.Editor;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,14 +14,24 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
     private PlayerControls controls;
     private Vector2 moveInput;
-    private Vector2 lookInput;
+
+    // There's issues with Unity's new input system and mouse input deltas that I can't fully explain;
+    // it's like they're not captured on the same ticks that Update() methods are called and Time.deltaTime
+    // corelates with, so the net result is a measurement that can't be frame-compensated for controlling
+    // the camera (I had this issue on the last project and in personal projects as well; I've yet to find
+    // a solution other than using the old methods for mouse capture in the event mouse input is needed for
+    // camera control)
+    // - piqey
+    // private Vector2 lookInput;
+
     private Vector3 velocity;
     public bool isDashing = false;
     private bool canDash = true;
 
     // Camera
     public Transform cameraPivot;
-    public float cameraSensitivity = 2f;
+    public Vector2 cameraSensitivity = Vector2.one;
+    [Range(0f, 6f)]
     public float cameraDistance = 3f;
     public float minY = -40f;
     public float maxY = 80f;
@@ -30,22 +40,44 @@ public class PlayerMovement : MonoBehaviour
 
     // Stamina
     [Header("Stamina")]
+    [Range(0f, 100f)]
     public float maxStamina = 100f;
+    [Range(0f, 100f)]
     public float currentStamina;
+    [Range(0f, 60f)]
     public float dashStaminaCost = 30f;
+    [Range(0f, 50f)]
     public float staminaRegenRate = 20f;
+    [Range(0f, 10f)]
     public float lowStaminaRegenRate = 5f;
     public float lowStaminaThreshold = 0f;
     private bool outOfStamina = false;
 
-    public Slider staminaBar; // assign in inspector
-
     //Health
+    [Header("Health")]
+    [Range(0f, 100f)]
     public float maxPlayerHealth = 100f;
+    [Range(0f, 100f)]
     public float currentPlayerHealth;
-    public Slider healthBar;
     private bool isAlive = true;
     public GameObject deathUI;
+
+    [Header("UI")]
+    public RectTransform healthBar;
+    public RectTransform staminaBar; // assign in inspector
+
+    [Range(0.01f, 16f)]
+    public float healthBarLerpSpeed = 6f;
+    [Range(0.01f, 16f)]
+    public float staminaBarLerpSpeed = 6f;
+
+    [Header("Debug Only")]
+
+    [SerializeField, ReadOnly] private float healthBarInitialX;
+    [SerializeField, ReadOnly] private float staminaBarInitialX;
+
+    [SerializeField, ReadOnly] private float healthBarLerpX;
+    [SerializeField, ReadOnly] private float staminaBarLerpX;
 
     private void Awake()
     {
@@ -56,14 +88,20 @@ public class PlayerMovement : MonoBehaviour
         controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         controls.Player.Move.canceled += _ => moveInput = Vector2.zero;
 
-        controls.Player.Look.performed += ctx => lookInput = ctx.ReadValue<Vector2>();
-        controls.Player.Look.canceled += _ => lookInput = Vector2.zero;
+        // controls.Player.Look.performed += ctx => lookInput = ctx.ReadValue<Vector2>();
+        // controls.Player.Look.canceled += _ => lookInput = Vector2.zero;
 
         controls.Player.Jump.performed += ctx => TryJump();
         controls.Player.Dash.performed += ctx => TryDash();
 
         currentStamina = maxStamina;
         currentPlayerHealth = maxPlayerHealth;
+
+        healthBarInitialX = healthBar.anchoredPosition.x;
+        staminaBarInitialX = staminaBar.anchoredPosition.x;
+
+        healthBarLerpX = healthBarInitialX;
+        staminaBarLerpX = staminaBarInitialX;
     }
 
     private void OnEnable() => controls.Enable();
@@ -75,8 +113,8 @@ public class PlayerMovement : MonoBehaviour
         {
             UpdateCamera();
             RegenerateStamina();
-            UpdateStaminaUI();
-            UpdateHealthUI();
+
+            UpdateUI();
 
             if (controller.isGrounded && velocity.y < 0)
                 velocity.y = -2f;
@@ -97,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             if (!isDashing)
-                controller.Move(move * moveSpeed * Time.deltaTime);
+                controller.Move(moveSpeed * Time.deltaTime * move);
 
             velocity.y += gravity * Time.deltaTime;
             controller.Move(velocity * Time.deltaTime);
@@ -132,7 +170,7 @@ public class PlayerMovement : MonoBehaviour
 
         while (elapsed < dashDuration)
         {
-            controller.Move(dashDirection * dashSpeed * Time.deltaTime);
+            controller.Move(dashSpeed * Time.deltaTime * dashDirection);
             elapsed += Time.deltaTime;
             yield return null;
         }
@@ -157,18 +195,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void UpdateStaminaUI()
-    {
-        if (staminaBar != null)
-        {
-            staminaBar.value = currentStamina / maxStamina;
-        }
-    }
-
     void UpdateCamera()
     {
-        yaw += lookInput.x * cameraSensitivity;
-        pitch -= lookInput.y * cameraSensitivity;
+        Vector2 mouse = new(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        mouse *= cameraSensitivity;
+
+        yaw += mouse.x;
+        pitch -= mouse.y;
+
         pitch = Mathf.Clamp(pitch, minY, maxY);
         cameraPivot.rotation = Quaternion.Euler(pitch, yaw, 0);
     }
@@ -188,18 +222,25 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void UpdateHealthUI()
+    void UpdateUI()
     {
         if (healthBar != null)
-        {
-            healthBar.value = currentPlayerHealth / maxPlayerHealth;
-        }
+            UpdateUIBar(healthBar, currentPlayerHealth / maxPlayerHealth, healthBarInitialX, ref healthBarLerpX, healthBarLerpSpeed);
+
+        if (staminaBar != null)
+            UpdateUIBar(staminaBar, currentStamina / maxStamina, staminaBarInitialX, ref staminaBarLerpX, staminaBarLerpSpeed);
     }
+
+    void UpdateUIBar(RectTransform barTransform, float delta, float initialX, ref float lerpX, float lerpSpeed)
+    {
+        lerpX = Mathf.Lerp(lerpX, initialX * delta, Time.deltaTime * lerpSpeed);
+        barTransform.anchoredPosition = new Vector2(lerpX, barTransform.anchoredPosition.y);
+    }
+
     void GameOver()
     {
         currentPlayerHealth = 0;
         isAlive = false;
         deathUI.SetActive(true);
     }
-
 }

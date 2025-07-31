@@ -5,8 +5,13 @@ public class FamineStateMachine : BossStateMachine
     public FamineStateClawAttack stateClawAttack;
     public FamineStateHeadAttack stateHeadAttack;
 
+    [Header("Attack Objects")]
+
     [SerializeField] GameObject headAttackObj;
     public GameObject GetHeadAttackObject() { return headAttackObj; }
+
+    public Transform headposition;
+    public GameObject handAttack;
 
     public override void InstantiateStates()
     {
