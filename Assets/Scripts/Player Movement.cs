@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI; // For UI bar
+using piqey.Utilities.Editor;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -38,14 +38,27 @@ public class PlayerMovement : MonoBehaviour
     public float lowStaminaThreshold = 0f;
     private bool outOfStamina = false;
 
-    public Slider staminaBar; // assign in inspector
-
     //Health
+    [Header("Health")]
     public float maxPlayerHealth = 100f;
     public float currentPlayerHealth;
-    public Slider healthBar;
     private bool isAlive = true;
     public GameObject deathUI;
+
+    [Header("UI")]
+    public RectTransform healthBar;
+    public RectTransform staminaBar; // assign in inspector
+
+    public float healthBarLerpSpeed = 6f;
+    public float staminaBarLerpSpeed = 6f;
+
+    [Header("Debug Only")]
+
+    [SerializeField, ReadOnly] private float healthBarInitialX;
+    [SerializeField, ReadOnly] private float staminaBarInitialX;
+
+    [SerializeField, ReadOnly] private float healthBarLerpX;
+    [SerializeField, ReadOnly] private float staminaBarLerpX;
 
     private void Awake()
     {
@@ -64,6 +77,12 @@ public class PlayerMovement : MonoBehaviour
 
         currentStamina = maxStamina;
         currentPlayerHealth = maxPlayerHealth;
+
+        healthBarInitialX = healthBar.anchoredPosition.x;
+        staminaBarInitialX = staminaBar.anchoredPosition.x;
+
+        healthBarLerpX = healthBarInitialX;
+        staminaBarLerpX = staminaBarInitialX;
     }
 
     private void OnEnable() => controls.Enable();
@@ -75,8 +94,8 @@ public class PlayerMovement : MonoBehaviour
         {
             UpdateCamera();
             RegenerateStamina();
-            UpdateStaminaUI();
-            UpdateHealthUI();
+
+            UpdateUI();
 
             if (controller.isGrounded && velocity.y < 0)
                 velocity.y = -2f;
@@ -157,14 +176,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void UpdateStaminaUI()
-    {
-        if (staminaBar != null)
-        {
-            staminaBar.value = currentStamina / maxStamina;
-        }
-    }
-
     void UpdateCamera()
     {
         yaw += lookInput.x * cameraSensitivity;
@@ -188,18 +199,25 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void UpdateHealthUI()
+    void UpdateUI()
     {
         if (healthBar != null)
-        {
-            healthBar.value = currentPlayerHealth / maxPlayerHealth;
-        }
+            UpdateUIBar(healthBar, currentPlayerHealth / maxPlayerHealth, healthBarInitialX, ref healthBarLerpX, healthBarLerpSpeed);
+
+        if (staminaBar != null)
+            UpdateUIBar(staminaBar, currentStamina / maxStamina, staminaBarInitialX, ref staminaBarLerpX, staminaBarLerpSpeed);
     }
+
+    void UpdateUIBar(RectTransform barTransform, float delta, float initialX, ref float lerpX, float lerpSpeed)
+    {
+        lerpX = Mathf.Lerp(lerpX, initialX * delta, Time.deltaTime * lerpSpeed);
+        barTransform.anchoredPosition = new Vector2(lerpX, barTransform.anchoredPosition.y);
+    }
+
     void GameOver()
     {
         currentPlayerHealth = 0;
         isAlive = false;
         deathUI.SetActive(true);
     }
-
 }
