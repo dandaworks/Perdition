@@ -27,7 +27,7 @@ Material:
   m_ValidKeywords:
   - _PS1_JITTER
   - _PS1_PIXELSNAP
-  - _PS1_SAMPLER_POINTCLAMP
+  - _PS1_SAMPLER_POINTREPEAT
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -122,7 +122,7 @@ Material:
     - _JitterGridScale: 20
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _PS1_SAMPLER: 1
+    - _PS1_SAMPLER: 2
     - _Parallax: 0.005
     - _PixelSnap: 1
     - _QueueOffset: 0
