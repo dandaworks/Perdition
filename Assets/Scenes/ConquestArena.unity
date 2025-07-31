@@ -1726,6 +1726,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorCollider
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 246cf7441fe00a44ba57441acb35bf52, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4504,7 +4508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6167133266524678950, guid: e0bd980a7ce56b948836da30849a7156, type: 3}
       propertyPath: maxHealth
-      value: 500
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6167133266524678950, guid: e0bd980a7ce56b948836da30849a7156, type: 3}
       propertyPath: maxTimeBetweenAttacks
