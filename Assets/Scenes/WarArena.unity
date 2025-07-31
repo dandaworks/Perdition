@@ -2689,33 +2689,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2090346957543674663, guid: 4291141eb996649458d96ea46e341ca3, type: 3}
-      propertyPath: m_Color.b
-      value: 0.13333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 2090346957543674663, guid: 4291141eb996649458d96ea46e341ca3, type: 3}
-      propertyPath: m_Color.g
-      value: 0.6509804
-      objectReference: {fileID: 0}
-    - target: {fileID: 2090346957543674663, guid: 4291141eb996649458d96ea46e341ca3, type: 3}
-      propertyPath: m_Color.r
-      value: 0.13333334
-      objectReference: {fileID: 0}
     - target: {fileID: 3887334722614954875, guid: 4291141eb996649458d96ea46e341ca3, type: 3}
       propertyPath: m_Name
       value: Portal
-      objectReference: {fileID: 0}
-    - target: {fileID: 3937379610806612059, guid: 4291141eb996649458d96ea46e341ca3, type: 3}
-      propertyPath: m_Color.b
-      value: 0.13333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 3937379610806612059, guid: 4291141eb996649458d96ea46e341ca3, type: 3}
-      propertyPath: m_Color.g
-      value: 0.6509804
-      objectReference: {fileID: 0}
-    - target: {fileID: 3937379610806612059, guid: 4291141eb996649458d96ea46e341ca3, type: 3}
-      propertyPath: m_Color.r
-      value: 0.13333334
       objectReference: {fileID: 0}
     - target: {fileID: 4519721736474841537, guid: 4291141eb996649458d96ea46e341ca3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2757,14 +2733,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7344768663317174132, guid: 4291141eb996649458d96ea46e341ca3, type: 3}
-      propertyPath: SceneToLoad.m_SceneName
-      value: FamineArena
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344768663317174132, guid: 4291141eb996649458d96ea46e341ca3, type: 3}
-      propertyPath: SceneToLoad.m_SceneAsset
-      value: 
-      objectReference: {fileID: 102900000, guid: 126eb3a1f5c609d4281590b52054d1bc, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
