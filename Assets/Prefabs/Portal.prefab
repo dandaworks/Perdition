@@ -512,7 +512,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag: Player
   onCollide: 1
-  chooseScene: 0
+  chooseScene: 1
   timer: 0
   waitTime: 5
-  chooseSceneIndex: 0
+  SceneToLoad:
+    m_SceneAsset: {fileID: 102900000, guid: 63c0713f7866f144f996b2671f2530b1, type: 3}
+    m_SceneName: Hub

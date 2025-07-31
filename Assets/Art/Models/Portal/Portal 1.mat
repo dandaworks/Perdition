@@ -16,7 +16,7 @@ Material:
   - _PS1_AFFINE
   - _PS1_JITTER
   - _PS1_PIXELSNAP
-  - _PS1_SAMPLER_POINTREPEAT
+  - _PS1_SAMPLER_POINTCLAMP
   m_InvalidKeywords:
   - _ALPHACLIP_ON
   - _RECEIVE_SHADOWS_OFF
@@ -94,8 +94,8 @@ Material:
     - _Affine: 1
     - _AlphaClip: 1
     - _AlphaToMask: 1
-    - _Blend: 0
-    - _BlendModePreserveSpecular: 1
+    - _Blend: 2
+    - _BlendModePreserveSpecular: 0
     - _BumpScale: 1
     - _CastShadows: 0
     - _ClearCoatMask: 0
@@ -114,7 +114,7 @@ Material:
     - _JitterGridScale: 2
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _PS1_SAMPLER: 2
+    - _PS1_SAMPLER: 1
     - _Parallax: 0.005
     - _PixelSnap: 1
     - _QueueOffset: 0
