@@ -18,6 +18,6 @@ public class BossStateDead : BaseState
         //Debug.Log($"{stateMachine.gameObject.name} has died!");
         stateMachine.GetComponent<Collider>().enabled = false;
         // Optional: Destroy after delay
-        Object.Destroy(stateMachine.gameObject, 2f);
+        Object.Destroy(stateMachine.gameObject, 1f);
     }
 }

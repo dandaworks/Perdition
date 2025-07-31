@@ -68,6 +68,7 @@ public class SwordHitboxController : MonoBehaviour
             PlayerStateMachine pm = other.GetComponent<PlayerStateMachine>();
             if (pm != null)
             {
+                DisableHitbox();
                 float damage = GetDamageForAttack();
                 pm.PlayerTakeDamage(damage);
                 Debug.Log($"Sword hit player for {damage} damage ({currentAttack})");

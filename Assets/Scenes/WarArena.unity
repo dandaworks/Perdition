@@ -1999,7 +1999,7 @@ MonoBehaviour:
   detectionRange: 40.8
   player: {fileID: 0}
   contactDamage: 10
-  maxHealth: 500
+  maxHealth: 700
   maxTimeBetweenAttacks: 7
   animator: {fileID: 0}
   bossAnimator: {fileID: 940961281}
