@@ -12,6 +12,7 @@ Material:
   m_Parent: {fileID: 2100000, guid: 449b736b8b972724db09b7258f74e142, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _NORMALMAP
   - _PS1_JITTER
   - _PS1_PIXELSNAP
   - _PS1_SAMPLER_POINTREPEAT
