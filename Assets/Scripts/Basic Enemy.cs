@@ -25,7 +25,7 @@ public class BasicEnemy : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        agent = GetComponent<NavMeshAgent>();
+        //agent = GetComponent<NavMeshAgent>();
 
         if (player == null)
         {
@@ -91,10 +91,10 @@ public class BasicEnemy : MonoBehaviour
         Debug.Log($"{gameObject.name} has died!");
 
         // Disable movement and collider
-        agent.enabled = false;
+        //agent.enabled = false;
         GetComponent<Collider>().enabled = false;
 
         // Optional: Destroy after delay
-        Destroy(gameObject, 2f);
+        Destroy(gameObject);
     }
 }

@@ -12,6 +12,8 @@ public class HurtPlayerOnTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("other");
+
         if (hasHurtPlayer) return;
 
         if (other.CompareTag("Player"))

@@ -7,7 +7,7 @@ public class PlayerSwordCombat : MonoBehaviour
     public Animator animator;
     public float damageAmount = 10f;
     public string targetTag = "Enemy";
-    public float attackDuration = 0.3f; // Set to match animation length
+    public float attackDuration = .3f; // Set to match animation length
 
     private PlayerControls controls;
     private bool isAttacking = false;
