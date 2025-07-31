@@ -1582,14 +1582,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.1
       objectReference: {fileID: 0}
-    - target: {fileID: 3084668768101212307, guid: e386fbf5ee78cd34dad823111da64b17, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3084668768101212307, guid: e386fbf5ee78cd34dad823111da64b17, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3974183139518597090, guid: e386fbf5ee78cd34dad823111da64b17, type: 3}
       propertyPath: m_LocalPosition.x
       value: 31.224182
@@ -1633,14 +1625,6 @@ PrefabInstance:
     - target: {fileID: 4540237594602064457, guid: e386fbf5ee78cd34dad823111da64b17, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8055389818739096950, guid: e386fbf5ee78cd34dad823111da64b17, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8055389818739096950, guid: e386fbf5ee78cd34dad823111da64b17, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8112178543492599295, guid: e386fbf5ee78cd34dad823111da64b17, type: 3}
       propertyPath: m_Name
@@ -1866,6 +1850,8 @@ MonoBehaviour:
   player: {fileID: 0}
   contactDamage: 10
   maxHealth: 50
+  maxTimeBetweenAttacks: 3
+  animator: {fileID: 0}
   bossAnimator: {fileID: 940961281}
   floatingSword: {fileID: 565629382}
   arrowPrefab: {fileID: 1223052229757238397, guid: c855c4b7469e6eb44ba1c537d2cfa4dc, type: 3}
@@ -4258,7 +4244,9 @@ MonoBehaviour:
   chooseScene: 0
   timer: 0
   waitTime: 5
-  chooseSceneIndex: 0
+  SceneToLoad:
+    m_SceneAsset: {fileID: 0}
+    m_SceneName: 
 --- !u!33 &8103153192473393075
 MeshFilter:
   m_ObjectHideFlags: 0
