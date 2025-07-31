@@ -14,15 +14,23 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
     private PlayerControls controls;
     private Vector2 moveInput;
-    private Vector2 lookInput;
+
+    // There's issues with Unity's new input system and mouse input deltas that I can't fully explain;
+    // it's like they're not captured on the same ticks that Update() methods are called and Time.deltaTime
+    // corelates with, so the net result is a measurement that can't be frame-compensated for controlling
+    // the camera (I had this issue on the last project and in personal projects as well; I've yet to find
+    // a solution other than using the old methods for mouse capture in the event mouse input is needed for
+    // camera control)
+    // - piqey
+    // private Vector2 lookInput;
+
     private Vector3 velocity;
     public bool isDashing = false;
     private bool canDash = true;
 
     // Camera
     public Transform cameraPivot;
-    [Range(0.01f, 5f)]
-    public float cameraSensitivity = 2f;
+    public Vector2 cameraSensitivity = Vector2.one;
     [Range(0f, 6f)]
     public float cameraDistance = 3f;
     public float minY = -40f;
@@ -80,8 +88,8 @@ public class PlayerMovement : MonoBehaviour
         controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         controls.Player.Move.canceled += _ => moveInput = Vector2.zero;
 
-        controls.Player.Look.performed += ctx => lookInput = ctx.ReadValue<Vector2>();
-        controls.Player.Look.canceled += _ => lookInput = Vector2.zero;
+        // controls.Player.Look.performed += ctx => lookInput = ctx.ReadValue<Vector2>();
+        // controls.Player.Look.canceled += _ => lookInput = Vector2.zero;
 
         controls.Player.Jump.performed += ctx => TryJump();
         controls.Player.Dash.performed += ctx => TryDash();
@@ -189,8 +197,12 @@ public class PlayerMovement : MonoBehaviour
 
     void UpdateCamera()
     {
-        yaw += lookInput.x * cameraSensitivity;
-        pitch -= lookInput.y * cameraSensitivity;
+        Vector2 mouse = new(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        mouse *= cameraSensitivity;
+
+        yaw += mouse.x;
+        pitch -= mouse.y;
+
         pitch = Mathf.Clamp(pitch, minY, maxY);
         cameraPivot.rotation = Quaternion.Euler(pitch, yaw, 0);
     }
