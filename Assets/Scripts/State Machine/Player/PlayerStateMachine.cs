@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerStateMachine : BaseStateMachine
 {
     // Movement
@@ -143,6 +143,8 @@ public class PlayerStateMachine : BaseStateMachine
 
         PlayerInput.OnMeleeLightEvent += TryLightMelee;
         PlayerInput.OnMeleeHeavyEvent += TryHeavyMelee;
+
+        PlayerInput.OnMenuEvent += ExitToMainMenu;
     }
 
     private void OnDisable()
@@ -157,6 +159,8 @@ public class PlayerStateMachine : BaseStateMachine
 
         PlayerInput.OnMeleeLightEvent -= TryLightMelee;
         PlayerInput.OnMeleeHeavyEvent -= TryHeavyMelee;
+
+        PlayerInput.OnMenuEvent -= ExitToMainMenu;
     }
 
     public override void StartFunctions()
@@ -342,5 +346,10 @@ public class PlayerStateMachine : BaseStateMachine
         ChangeState(stateDead);
 
         SetCanChangeStates(false);
+    }
+
+    void ExitToMainMenu()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 }

@@ -52,4 +52,10 @@ public class PlayerInput : MonoBehaviour
         OnMoveEvent?.Invoke(value.Get<Vector2>());
     }
 
+    public static Call OnMenuEvent;
+    void OnMenu()
+    {
+        Debug.Log("Menu");
+        OnMenuEvent?.Invoke();
+    }
 }
