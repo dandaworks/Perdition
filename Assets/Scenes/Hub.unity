@@ -501,7 +501,7 @@ Light:
   serializedVersion: 11
   m_Type: 1
   m_Color: {r: 0.36170214, g: 0.6595745, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.75
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1347,6 +1347,18 @@ PrefabInstance:
     - target: {fileID: 4691475279700483042, guid: 26a7fb72c9e5e05468e71e181aa5105e, type: 3}
       propertyPath: m_Name
       value: Player SM
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785490762054223169, guid: 26a7fb72c9e5e05468e71e181aa5105e, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.09803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785490762054223169, guid: 26a7fb72c9e5e05468e71e181aa5105e, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.0627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785490762054223169, guid: 26a7fb72c9e5e05468e71e181aa5105e, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.03137255
       objectReference: {fileID: 0}
     - target: {fileID: 8309489267329344733, guid: 26a7fb72c9e5e05468e71e181aa5105e, type: 3}
       propertyPath: m_LocalPosition.x
