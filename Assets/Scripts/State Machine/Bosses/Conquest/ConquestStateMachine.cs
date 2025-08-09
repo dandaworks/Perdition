@@ -12,7 +12,7 @@ public class ConquestStateMachine : BossStateMachine
     ConquestStatePushAttack statePushAttack;
     ConquestStateSummonAttack stateSummonAttack;
     ConquestStateSwordAttack stateSwordAttack;
-    ConquestStateIdle stateIdle;
+    new ConquestStateIdle stateIdle;
     public override BaseState InitialState()
     {
         return stateIdle;
