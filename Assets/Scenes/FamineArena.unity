@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 133803927}
   - component: {fileID: 133803926}
   - component: {fileID: 133803925}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1526,7 +1526,7 @@ GameObject:
   - component: {fileID: 1873863443}
   - component: {fileID: 1873863442}
   - component: {fileID: 1873863441}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
