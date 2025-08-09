@@ -23,22 +23,17 @@ public class SpriteLookAt : MonoBehaviour
     private bool DoLookAtTransform(out Transform lookAt)
     {
         if (target)
-        {
             lookAt = target;
-            return true;
-        }
         else if (Camera.main)
-        {
             lookAt = Camera.main.transform;
-            return true;
-        }
         else if (Camera.current)
-        {
             lookAt = Camera.current.transform;
-            return true;
+        else
+        {
+            lookAt = transform;
+            return false;
         }
 
-        lookAt = transform;
-        return false;
+        return true;
     }
 }
