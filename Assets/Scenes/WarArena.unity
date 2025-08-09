@@ -730,7 +730,7 @@ GameObject:
   m_Component:
   - component: {fileID: 369838539}
   - component: {fileID: 369838540}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FlameParent (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -776,7 +776,7 @@ GameObject:
   m_Component:
   - component: {fileID: 440328297}
   - component: {fileID: 440328298}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FlameParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1234,7 +1234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 725320847}
   - component: {fileID: 725320848}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Flame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1500,7 +1500,7 @@ GameObject:
   m_Component:
   - component: {fileID: 848137656}
   - component: {fileID: 848137657}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Flame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1587,7 +1587,7 @@ GameObject:
   m_Component:
   - component: {fileID: 853766721}
   - component: {fileID: 853766722}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Flame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2016,7 +2016,7 @@ GameObject:
   m_Component:
   - component: {fileID: 965481551}
   - component: {fileID: 965481552}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Flame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2472,7 +2472,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1089962398}
   - component: {fileID: 1089962399}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FlameParent (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2518,7 +2518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1137291836}
   - component: {fileID: 1137291837}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FlameParent (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2564,7 +2564,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1166774668}
   - component: {fileID: 1166774669}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FlameParent (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2731,7 +2731,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1340968878}
   - component: {fileID: 1340968880}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Flame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3016,7 +3016,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1538658856}
   - component: {fileID: 1538658857}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Flame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3355,7 +3355,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1739771195}
   - component: {fileID: 1739771196}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FlameParent (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
