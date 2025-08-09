@@ -198,12 +198,12 @@ public class PlayerStateMachine : BaseStateMachine
     public override void UpdateFunctions()
     {
         base.UpdateFunctions();
-        
+
         if (isAlive)
         {
             UpdateCamera();
         }
-        
+
         RegenerateStamina();
         UpdateUI();
 
@@ -271,15 +271,16 @@ public class PlayerStateMachine : BaseStateMachine
 
     void TryJump()
     {
-        Ray ray = new Ray();
+        // Physics.SphereCast(Physics.Ra, 0.4f, 0f, LayerMask.GetMask(""));
 
-        //Physics.SphereCast(Physics.Ra, 0.4f, 0f, LayerMask.GetMask(""));
-
-        if (controller.isGrounded || Physics.Raycast(transform.position, Vector3.down, 2f, LayerMask.GetMask("Environment")))
+        if (controller.isGrounded
+            || (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitInfo, 2f, LayerMask.GetMask("Environment"))
+                && !hitInfo.collider.gameObject.CompareTag("RequireGroundingForJump"))
+        )
             ChangeState(stateJump);
         else
         {
-            Debug.Log("No GRound");
+            Debug.Log("No Ground");
         }
     }
 
@@ -350,6 +351,6 @@ public class PlayerStateMachine : BaseStateMachine
 
     void ExitToMainMenu()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0);
     }
 }

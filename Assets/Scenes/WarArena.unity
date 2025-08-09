@@ -4161,6 +4161,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 364b371b9fec3244b9a95d9d662652be, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 364b371b9fec3244b9a95d9d662652be, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -4173,8 +4177,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1338345287691456403, guid: 364b371b9fec3244b9a95d9d662652be, type: 3}
+      propertyPath: m_TagString
+      value: RequireGroundingForJump
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338345287691456403, guid: 364b371b9fec3244b9a95d9d662652be, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1501439425993191551, guid: 364b371b9fec3244b9a95d9d662652be, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -4219,6 +4227,10 @@ PrefabInstance:
     - target: {fileID: 4732520690068293760, guid: 364b371b9fec3244b9a95d9d662652be, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5058414928864059656, guid: 364b371b9fec3244b9a95d9d662652be, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5058414928864059656, guid: 364b371b9fec3244b9a95d9d662652be, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
